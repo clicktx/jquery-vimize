@@ -32,16 +32,20 @@
     };
     // jkhl
     // j,k対象
-    var elementsArray = $("a");
-    console.log(elementsArray.length);
-    // var elementsArray = $("#product-list-wrap div a, #detailarea a, #detailarea select");
-    // if (elementsArray.length == 0){
-    //     elementsArray = $("#category_area a:visible");
+    var $objElements = $("a,div");
+    console.log($objElements);
+    // var $objElements = $("#product-list-wrap div a, #detailarea a, #detailarea select");
+    // if ($objElements.length == 0){
+    //     $objElements = $("#category_area a:visible");
     // }
     var activeElementNo = -1;
-    var activeFunction = function(n){ $(elementsArray[n]).focus(); };
+    var fnActiveElement = function(n){ $($objElements[n]).focus(); };
+
     $(window).keydown(function(e){
-      // ctrl
+      if (e.keyCode == 27) { $(':focus').blur(); keyPressBuffer =''; } // esc key
+      var $focused = $("input:focus");
+
+      // ctrl key
       if (e.ctrlKey){
         switch (e.keyCode){
           case 68: // ctrl+d
@@ -50,79 +54,85 @@
           case 85: // ctrl+u
             fnScrollUp();
             break;
-        }
-      } else if (e.shiftKey){
-        // code
-      } else {
-        // if (e.keyCode == 27) { $(':focus').blur(); keyPressBuffer =''; } // esc key
-        // if ( $("input:focus").length ){ return; }
-        switch (e.keyCode){
-          case 27: // esc
-            $(':focus').blur();
-            keyPressBuffer ='';
+          case 87: // ctrl+w
+            if ($focused.length) { $focused.val(''); }
             break;
           default:
             break;
         }
       }
-    });
-    $(window).keypress(function(e){
-      if ( $("input:focus").length ){ return; }
-      switch (e.keyCode){
-        case 100: // d
-          scrollBy(0,setting.scrollVal);
-          break;
-        case 117: // u
-          scrollBy(0,'-'+setting.scrollVal);
-          break;
+      if ($focused.length) return;
 
-        case 106: // j
-          if ((elementsArray.length -1) > activeElementNo){ activeFunction(++activeElementNo); }
-            console.log(activeElementNo);
-          break;
-        case 107: // k
-          if (activeElementNo > 0){ activeFunction(--activeElementNo); }
-            console.log(activeElementNo);
-          break;
-        case 104: // h
-          history.back();
-          break;
-        case 108: // l
-          history.forward();
-          break;
-        case 72: // H
-        case 48: // 0
-        case 94: // ^
-          activeFunction(activeElementNo=0);
-          break;
-        case 76: // L
-        case 36: // $
-          activeFunction(activeElementNo=(elementsArray.length -1));
-          break;
-        case 47: // '/'
-        case 63: // ?
-          $(setting.searchBoxSelector).focus();
-          return false;
-          // break;
-        case 103: // g
-          if (keyPressBuffer == 'g'){
-            keyPressBuffer =''; fnPageTop();
-          } else{
-            keyPressBuffer = 'g';
-          }
-          break;
-        case 71: // G
-          fnPageBottom();
-          break;
-        case 45: // -
-          window.location.href = setting.homePagePath;
-          break;
-        default:
-          break;
+      // shift key
+      if (e.shiftKey){
+        switch (e.keyCode){
+          case 191: // ? (shift+/)
+            $(setting.searchBoxSelector).focus();
+            return false;
+            // break;
+          case 71: // G
+            fnPageBottom();
+            break;
+          case 72: // H
+            fnActiveElement(activeElementNo=0);
+            break;
+          case 76: // L
+            fnActiveElement(activeElementNo=($objElements.length -1));
+            break;
+          default:
+            break;
+        }
+      } else {
+        switch (e.keyCode){
+          case 189: // -
+            window.location.href = setting.homePagePath;
+            break;
+          case 68: // d
+            scrollBy(0,setting.scrollVal);
+            break;
+          case 85: // u
+            scrollBy(0,'-'+setting.scrollVal);
+            break;
+          case 191: // '/'
+            $(setting.searchBoxSelector).focus();
+            return false;
+            // break;
+          case 71: // g
+            if (keyPressBuffer == 71){ keyPressBuffer =''; fnPageTop(); return false; }
+            break;
+          case 74: // j
+            if (($objElements.length -1) > activeElementNo){ fnActiveElement(++activeElementNo); }
+              console.log(activeElementNo);
+            break;
+          case 75: // k
+            if (activeElementNo > 0){ fnActiveElement(--activeElementNo); }
+              console.log(activeElementNo);
+            break;
+          // case 72: // h
+          //   history.back();
+          //   break;
+          // case 76: // l
+          //   history.forward();
+          //   break;
+          case 66: // b
+            history.back();
+            break;
+          case 78: // n << f にするべき？
+            history.forward();
+            break;
+          case 48: // 0
+          case 222: // ^
+            fnActiveElement(activeElementNo=0);
+            break;
+          case 36: // $
+            fnActiveElement(activeElementNo=($objElements.length -1));
+            break;
+          default:
+            break;
+        }
       }
-      if (e.keyCode != 103 ){keyPressBuffer ='';}
+      keyPressBuffer = e.keyCode;
     });
-
 
 
 
