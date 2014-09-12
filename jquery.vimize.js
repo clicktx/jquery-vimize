@@ -95,6 +95,12 @@
             case 71: // gg
               fnPageTop();
               break;
+            // case 78: // gn
+            //   window.location.href = $(setting.nextPage).attr('href');
+            //   break;
+            // case 80: // gp
+            // window.location.href = $(setting.prevPage).attr('href');
+            //   break;
           }
           keyPressBuffer ='';
           return false;
@@ -147,7 +153,7 @@
           default:
             break;
         }
-        keyPressBuffer = e.keyCode;
+        keyPressBuffer = '';
         return false;
       }
     });
