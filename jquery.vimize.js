@@ -20,8 +20,6 @@
       $objElements[i] = $(setting.selectors[i]);
       ++maxCols;
     }
-    console.log(setting);
-
 
     // functions
     var fnPageTop = function(){
