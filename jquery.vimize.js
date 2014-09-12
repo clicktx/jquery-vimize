@@ -6,7 +6,9 @@
       escKey: 'true',
       searchBoxSelector: '',
       homePagePath: '/',
-      scrollVal: $(window).height() *0.8
+      scrollVal: $(window).height() *0.3,
+      selectors: {0: 'a'},
+      defaultSelectors: 0
     };
     var setting = $.extend(defaults,options);
     var keyPressBuffer = '';
@@ -32,14 +34,16 @@
     };
     // jkhl
     // j,k対象
-    var $objElements = $("a,div");
+    // var $objElements = $(".posttitle a, .navigationpost a");
+    var $objElements = $(setting.selectors[0]);
+
     console.log($objElements);
     // var $objElements = $("#product-list-wrap div a, #detailarea a, #detailarea select");
     // if ($objElements.length == 0){
     //     $objElements = $("#category_area a:visible");
     // }
     var activeElementNo = -1;
-    var fnActiveElement = function(n){ $($objElements[n]).focus(); };
+    var fnActiveElement = function(n){ console.log('acticve'+n);$($objElements[n]).focus(); };
 
     $(window).keydown(function(e){
       if (e.keyCode == 27) { $(':focus').blur(); keyPressBuffer =''; } // esc key
@@ -79,6 +83,9 @@
           case 76: // L
             fnActiveElement(activeElementNo=($objElements.length -1));
             break;
+          case 52: // $ (shift+4)
+            fnActiveElement(activeElementNo=($objElements.length -1));
+            break;
           default:
             break;
         }
@@ -114,18 +121,16 @@
           // case 76: // l
           //   history.forward();
           //   break;
-          case 66: // b
+          case 66: // b pagerに対応する？
             history.back();
             break;
           case 78: // n << f にするべき？
             history.forward();
             break;
           case 48: // 0
+          case 96: // 0(テンキー)
           case 222: // ^
             fnActiveElement(activeElementNo=0);
-            break;
-          case 36: // $
-            fnActiveElement(activeElementNo=($objElements.length -1));
             break;
           default:
             break;
@@ -138,14 +143,3 @@
 
   }; //
 })(jQuery);
-
-
-// 100: // d
-// 117: // u
-// 74: // J(Shift+j)
-// 75: // K(Shift+k)
-// 32: // Space key
-// 17: // Ctrl key??
-
-
-
