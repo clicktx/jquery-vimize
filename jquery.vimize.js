@@ -87,6 +87,15 @@
           default:
             break;
         }
+      } else if(e.keyCode == 71){ // g commands
+          if(keyPressBuffer != 71){ keyPressBuffer = 71; return; }
+          switch(e.keyCode){
+            case 71: // gg
+              fnPageTop();
+              break;
+          }
+          keyPressBuffer ='';
+          return false;
       } else {
         switch (e.keyCode){
           case 189: // -
@@ -102,9 +111,6 @@
             $(setting.searchBoxSelector).focus();
             return false;
             // break;
-          case 71: // g
-            if (keyPressBuffer == 71){ keyPressBuffer =''; fnPageTop(); return false; }
-            break;
           case 74: // j
             if (($objElements[intActiveCol].length -1) > arrActiveElement[intActiveCol]){
               fnActiveElement(++arrActiveElement[intActiveCol]);
@@ -139,8 +145,8 @@
           default:
             break;
         }
+        keyPressBuffer = e.keyCode;
       }
-      keyPressBuffer = e.keyCode;
     });
 
 
