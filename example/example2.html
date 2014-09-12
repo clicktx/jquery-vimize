@@ -1,0 +1,939 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="google-site-verification" content="p0r6UguhW9dzSXTzOWY3ldlzL77fA88Er-L9qnuMw6A" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"  />
+    <title>
+clicktx::Tech::Memo | perl、 MySQL、オープンソース系、ウェブ系ネタ。なぜか鯖管メモがほとんどを占めている&#8230;    </title>
+         
+    <meta name="generator" content="WordPress 3.9.2" />
+    <link rel="stylesheet" href="http://perl.no-tubo.net/wp-content/themes/palmixio/style.css" type="text/css" media="screen" />
+
+  
+    <link rel="alternate" type="application/rss+xml" title="clicktx::Tech::Memo RSS Feed" href="http://perl.no-tubo.net/feed/" />
+    <link rel="pingback" href="http://perl.no-tubo.net/xmlrpc.php" />
+        <link rel='stylesheet' id='crayon-css'  href='http://perl.no-tubo.net/wp-content/plugins/crayon-syntax-highlighter/css/min/crayon.min.css?ver=2.6.5' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-theme-github-css'  href='http://perl.no-tubo.net/wp-content/plugins/crayon-syntax-highlighter/themes/github/github.css?ver=2.6.5' type='text/css' media='all' />
+<link rel='stylesheet' id='crayon-font-monaco-css'  href='http://perl.no-tubo.net/wp-content/plugins/crayon-syntax-highlighter/fonts/monaco.css?ver=2.6.5' type='text/css' media='all' />
+<link rel='stylesheet' id='dashicons-css'  href='http://perl.no-tubo.net/wp-includes/css/dashicons.min.css?ver=3.9.2' type='text/css' media='all' />
+<link rel='stylesheet' id='thickbox-css'  href='http://perl.no-tubo.net/wp-includes/js/thickbox/thickbox.css?ver=3.9.2' type='text/css' media='all' />
+<link rel='stylesheet' id='amazonjs-css'  href='http://perl.no-tubo.net/wp-content/plugins/amazonjs/css/amazonjs.css?ver=0.7.1' type='text/css' media='all' />
+<script type='text/javascript' src='http://perl.no-tubo.net/wp-includes/js/jquery/jquery.js?ver=1.11.0'></script>
+<script type='text/javascript' src='http://perl.no-tubo.net/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
+
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="../jquery.vimize.js"></script>
+<script>
+    $(function(){
+        $().vimize({
+            homePagePath: '/', // Path or URL
+            searchBoxSelector: 'input#se',
+            selectors: {
+                0: '.posttitle a, .navigationpost a',
+                1: '#sidebar a',
+            },
+            defaultSelectors: 0
+        });
+    });
+</script>
+
+
+<script type='text/javascript'>
+/* <![CDATA[ */
+var quicktagsL10n = {"closeAllOpenTags":"\u958b\u3044\u3066\u3044\u308b\u3059\u3079\u3066\u306e\u30bf\u30b0\u3092\u9589\u3058\u308b","closeTags":"\u30bf\u30b0\u3092\u9589\u3058\u308b","enterURL":"URL \u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044","enterImageURL":"\u753b\u50cf\u306e URL \u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044","enterImageDescription":"\u753b\u50cf\u306e\u8aac\u660e\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044","fullscreen":"\u30d5\u30eb\u30b9\u30af\u30ea\u30fc\u30f3","toggleFullscreen":"\u30d5\u30eb\u30b9\u30af\u30ea\u30fc\u30f3","textdirection":"\u30c6\u30ad\u30b9\u30c8\u8a18\u8ff0\u65b9\u5411","toggleTextdirection":"\u30c6\u30ad\u30b9\u30c8\u8a18\u8ff0\u65b9\u5411\u306e\u5207\u66ff"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://perl.no-tubo.net/wp-includes/js/quicktags.min.js?ver=3.9.2'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"2.6.5","is_admin":"0","ajaxurl":"http:\/\/perl.no-tubo.net\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"\u8cbc\u308a\u4ed8\u3051\u306b\u30b3\u30d4\u30fc\u3001%s\u306b%s\u3092\u62bc\u3057\u3066\u3001","minimize":"Click To Expand Code"};
+var CrayonTagEditorSettings = {"home_url":"http:\/\/perl.no-tubo.net","css":"crayon-te","css_selected":"crayon-selected","code_css":"#crayon-code","url_css":"#crayon-url","url_info_css":"#crayon-te-url-info","lang_css":"#crayon-lang","title_css":"#crayon-title","mark_css":"#crayon-mark","range_css":"#crayon-range","inline_css":"crayon-inline","inline_hide_css":"crayon-hide-inline","inline_hide_only_css":"crayon-hide-inline-only","hl_css":"#crayon-highlight","switch_html":"#content-html","switch_tmce":"#content-tmce","tinymce_button_generic":".mce-btn","tinymce_button":"a.mce_crayon_tinymce,.mce-i-crayon_tinymce","tinymce_button_unique":"mce_crayon_tinymce","tinymce_highlight":"mce-active","submit_css":"#crayon-te-ok","cancel_css":"#crayon-te-cancel","content_css":"#crayon-te-content","dialog_title_css":"#crayon-te-title","submit_wrapper_css":"#crayon-te-submit-wrapper","data_value":"data-value","attr_sep":":","css_sep":"_","fallback_lang":"default","dialog_title_add":"\u633f\u5165\u753b\u9762","dialog_title_edit":"\u7de8\u96c6\u753b\u9762","submit_add":"\u633f\u5165","submit_edit":"\u66f4\u65b0","bar":"#crayon-te-bar","bar_content":"#crayon-te-bar-content","extensions":{"scpt":"applescript","applescript":"applescript","swf":"as","fla":"as","cs":"c#","h":"c++","hh":"c++","hpp":"c++","hxx":"c++","h++":"c++","cc":"c++","cpp":"c++","cxx":"c++","c++":"c++","pas":"delphi","java":"java","class":"java","jar":"java","mv":"miva","mvc":"miva","mvt":"miva","m":"objc","mm":"objc","pl":"perl","py":"python","pyw":"python","pyc":"python","pyo":"python","pyd":"python","rb":"ruby","rbx":"ruby","rhtml":"ruby","vbs":"vb"}};
+var CrayonSyntaxSettings = {"version":"2.6.5","is_admin":"0","ajaxurl":"http:\/\/perl.no-tubo.net\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"\u8cbc\u308a\u4ed8\u3051\u306b\u30b3\u30d4\u30fc\u3001%s\u306b%s\u3092\u62bc\u3057\u3066\u3001","minimize":"Click To Expand Code"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://perl.no-tubo.net/wp-content/plugins/crayon-syntax-highlighter/js/min/crayon.te.min.js?ver=2.6.5'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://perl.no-tubo.net/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://perl.no-tubo.net/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 3.9.2" />
+<link rel="alternate" media="handheld" type="text/html" href="http://perl.no-tubo.net/page/2/" />
+<script type="text/javascript">
+    window._wp_rp_static_base_url = 'https://wprp.zemanta.com/static/';
+    window._wp_rp_wp_ajax_url = "http://perl.no-tubo.net/wp-admin/admin-ajax.php";
+    window._wp_rp_plugin_version = '3.5.1';
+    window._wp_rp_post_id = '4384';
+    window._wp_rp_num_rel_posts = '6';
+    window._wp_rp_thumbnails = true;
+    window._wp_rp_post_title = 'EC-CUBE%E3%81%A7%E7%84%A1%E6%96%99%E3%81%A7%E4%BD%BF%E3%81%88%E3%82%8B%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B7%E3%83%96%E3%81%AE%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%E3%80%8CEC-CUBE+on+BootStrap3%E3%80%8D%E3%81%A8%E3%81%84%E3%81%86%E3%81%AE%E3%82%92%E4%BD%9C%E3%82%8A%E3%81%BE%E3%81%97%E3%81%9F';
+    window._wp_rp_post_tags = ['bootstrap', 'bootstrap3', 'ec-cube', 'ec-cube2.13', '%3F%3F%3F%3F%3F%3F', 'ec-cube', 'mini', 'alt', 'bootstrap', 'a'];
+    window._wp_rp_promoted_content = true;
+</script>
+<script type="text/javascript" src="https://wprp.zemanta.com/static/js/loader.js?version=3.5.1" async></script>
+<link rel="stylesheet" href="http://perl.no-tubo.net/wp-content/plugins/wordpress-23-related-posts-plugin/static/themes/vertical-m.css?version=3.5.1" />
+    <style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+ƒƒ
+    <!-- this product is released under General Public License. You can find details about the license at http://www.opensource.org/licenses/gpl-license.php -->    
+    <!--[if IE 5]>
+        <link rel="stylesheet" href="http://perl.no-tubo.net/wp-content/themes/palmixio/ie5.css" type="text/css" media="screen" />
+        <![endif]-->    
+    <!--[if IE 6]>
+        <link rel="stylesheet" href="http://perl.no-tubo.net/wp-content/themes/palmixio/ie6.css" type="text/css" media="screen" />
+        <![endif]-->    
+    <!--[if IE 7]>
+        <link rel="stylesheet" href="http://perl.no-tubo.net/wp-content/themes/palmixio/ie7.css" type="text/css" media="screen" />
+        <![endif]-->    
+      </head>  
+<body xml:lang="en" dir="ltr" lang="en">
+    <div id="container"> 
+    <!-- begin header div -->     
+      <div id="header">
+             
+<div id="bgmenu">
+        <ul id="menu"><!-- start menu --> 
+                 
+          <li><a title="clicktx::Tech::Memo" href="http://perl.no-tubo.net/">Home</a></li>          
+                     
+                   
+           <li><a href="http://perl.no-tubo.net/wp-login.php">ログイン</a></li> 
+             
+        </ul><!--  end menu  --> 
+</div> 
+        <div id="logo"> <!-- begin title, description, logo  -->        
+                    <h1>            
+            <a title="clicktx::Tech::Memo" href="http://perl.no-tubo.net/">clicktx::Tech::Memo</a></h1><br />          
+                    <p>"perl、 MySQL、オープンソース系、ウェブ系ネタ。なぜか鯖管メモがほとんどを占めている&#8230;...."</p>             
+                </div>        
+         
+        <div id="contentsearch">          
+          <ul><li>
+  <form method="get" id="searchformheader" action="http://perl.no-tubo.net/">
+    <div class="backgroundinputsearch">
+     <input type="text" value="検索..." name="s" id="se" onfocus="if (this.value == '検索...') {this.value = '';}" onblur="if (this.value == '') {this.value = '検索...';}" />
+    </div>
+    <input name="submit" id="mysearchsubmit" type="image" onmouseover="this.src='http://perl.no-tubo.net/wp-content/themes/palmixio/images/searchsubmithover.png';" onmouseout="this.src='http://perl.no-tubo.net/wp-content/themes/palmixio/images/searchsubmit.png';" src="http://perl.no-tubo.net/wp-content/themes/palmixio/images/searchsubmit.png" />
+  </form></li>
+</ul>
+          
+          <div id="feedarticles">            
+            <a rel="nofollow" title="Entries (RSS)" href="http://perl.no-tubo.net/feed/">              
+              <img alt="Entries (RSS)" src="http://perl.no-tubo.net/wp-content/themes/palmixio/images/feed-articles.png" width="87" height="90" /></a>          
+          </div>          
+          <div id="feedcomments">            
+            <a rel="nofollow" title="コメント (RSS)" href="http://perl.no-tubo.net/comments/feed/">              
+              <img alt="コメント (RSS)" src="http://perl.no-tubo.net/wp-content/themes/palmixio/images/feed-comments.png" width="87" height="90" /></a>          
+          </div>        
+        </div> 
+        <!-- end title, description, and logo -->
+
+         </div>      
+      <!-- end header div -->
+<div id="headershadow">
+      </div><div id="main"> 
+  <!-- begin main div -->
+    <div class="main-content">
+    <div class="postbackground">
+      <div class="datebackground">
+        <span class="datejm">
+          2014年 6月        </span>
+        <span class="datey">
+          3        </span>
+      </div>
+      <div class="postmetadata">
+        <p class="background-postmetadata">
+                  Tags: <a href="http://perl.no-tubo.net/tag/bootstrap/" rel="tag">Bootstrap</a>, <a href="http://perl.no-tubo.net/tag/bootstrap3/" rel="tag">Bootstrap3</a>, <a href="http://perl.no-tubo.net/tag/ec-cube/" rel="tag">EC-CUBE</a>, <a href="http://perl.no-tubo.net/tag/ec-cube2-13/" rel="tag">EC-CUBE2.13</a>, <a href="http://perl.no-tubo.net/tag/%e3%83%86%e3%83%b3%e3%83%97%e3%83%ac%e3%83%bc%e3%83%88/" rel="tag">テンプレート</a>.           
+        <br />
+        <span style="border-top:1px solid #dedede;">
+          Written by 
+          <a href="http://perl.no-tubo.net/author/admin/" title="clicktx による投稿" rel="author">clicktx</a>,
+                     <a href="http://perl.no-tubo.net/2014/06/03/ec-cube-on-bootstrap3%e3%81%a8%e3%81%84%e3%81%86%e3%83%87%e3%82%b6%e3%82%a4%e3%83%b3%e3%83%86%e3%83%b3%e3%83%97%e3%83%ac%e3%83%bc%e3%83%88%e3%82%92%e4%bd%9c%e3%82%8a%e3%81%be%e3%81%97%e3%81%9f/#respond" title="EC-CUBEで無料で使えるレスポンシブのテンプレート「EC-CUBE on BootStrap3」というのを作りました へのコメント">Comments (0)</a>         </span>
+        </p>
+              <div class="background-link-pages"></div> 
+                </div>
+
+      <div class="post" id="post-4384"> <!-- begin post -->
+        <div class="posttitle">
+          <div class="tlbackgroundtitle">
+          </div>
+          <div class="trbackgroundtitle">
+          </div><h2>
+            <a href="http://perl.no-tubo.net/2014/06/03/ec-cube-on-bootstrap3%e3%81%a8%e3%81%84%e3%81%86%e3%83%87%e3%82%b6%e3%82%a4%e3%83%b3%e3%83%86%e3%83%b3%e3%83%97%e3%83%ac%e3%83%bc%e3%83%88%e3%82%92%e4%bd%9c%e3%82%8a%e3%81%be%e3%81%97%e3%81%9f/" rel="bookmark" title="EC-CUBEで無料で使えるレスポンシブのテンプレート「EC-CUBE on BootStrap3」というのを作りました">
+              EC-CUBEで無料で使えるレスポンシブのテンプレート「EC-CUBE on BootStrap3」というのを作りました</a></h2>
+          <div class="blbackgroundtitle">
+          </div>
+          <div class="brbackgroundtitle">
+          </div>
+        </div>
+        <div class="entry">
+          <p>
+                      </p>
+<a href="http://perl.no-tubo.net/2014/06/03/ec-cube-on-bootstrap3%e3%81%a8%e3%81%84%e3%81%86%e3%83%87%e3%82%b6%e3%82%a4%e3%83%b3%e3%83%86%e3%83%b3%e3%83%97%e3%83%ac%e3%83%bc%e3%83%88%e3%82%92%e4%bd%9c%e3%82%8a%e3%81%be%e3%81%97%e3%81%9f/" title="EC-CUBEで無料で使えるレスポンシブのテンプレート「EC-CUBE on BootStrap3」というのを作りました"><img width="500" height="384" src="http://perl.no-tubo.net/wp-content/uploads/2014/06/2014-06-03-17.50.59-500x384.png" class="aligncenter wp-post-image" alt="EC-CUBE on BootStrap3" /></a><p>作り始めたキッカケはこちらのエントリー。</p>
+<p><a href="http://blog.nagaki.me/practice/released-eccube-bootstrap.html">eccube-bootstrapというEC CUBE用のテーマを作りました。</a></p>
+<p>初めはこちらのテンプレートをカスタマイズして使おうかと思ったのですが、BootStrapのバージョン3を使ったものが欲しくなった＆勉強のため（<a href="http://gunma-web.org">勉強会</a>のため？）に作り始めました。</p>
+<h4>使用バージョン</h4>
+<ul>
+<li>EC-CUBE 2.13.1<br />
+<a href="http://www.ec-cube.net">http://www.ec-cube.net</a></li>
+<li>Twitter BootStrap v3.1.0<br />
+<a href="http://getbootstrap.com">http://getbootstrap.com</a></li>
+</ul>
+<p>また、BootStrapのアイコンは少なめなので<a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a>というwebフォントアイコンも使っています。</p>
+<h4>デモサイト</h4>
+<ul>
+<li><a href="http://eccube-on-bootstrap3.no-tubo.net/">http://eccube-on-bootstrap3.no-tubo.net/</a></li>
+</ul>
+<p>ちなみに開発時の表示確認（実機）は</p>
+<ul>
+<li>mac</li>
+<li>iPhone5</li>
+<li>iPad mini Retina</li>
+</ul>
+<p>となります。レスポンシブの表示確認をサクッとしたい方は以下のサービスがオススメです。</p>
+<ul>
+<li><a href="http://www.responsinator.com/?url=http%3A%2F%2Feccube-on-bootstrap3.no-tubo.net%2F">Responsinator</a></li>
+</ul>
+<h4>リポジトリ</h4>
+<p>githubで公開しています。</p>
+<ul>
+<li><a href="https://github.com/clicktx/eccube-on-bootstrap3">clicktx/eccube-on-bootstrap3</a></li>
+</ul>
+<h4>テンプレートの特徴</h4>
+<ul>
+<li>モバイルファースト</li>
+<li>レスポンシブweb</li>
+<li>フラットデザイン</li>
+<li>vimキーバインド（おまけ）</li>
+</ul>
+<p>一応力を入れたのはスマホ＆タブレットとなります。BootStrap バージョン3の使用感ですが、モバイルファーストを謳っているだけあってスマホとかタブレット用のビューが以前のバージョンよりも作りやすくなっています。</p>
+<p>ただテキストサイズやmargin、paddingなんかを微調整したい時があるので、ヘルパー的なCSSを書いて使っています。BootStrapの命名規則に倣って <code>margin-xs</code> や <code>padding-bottom-lg</code> みたいなclassにしています。</p>
+<h4>製作期間</h4>
+<p>2月7日から始めて5月24日までと、約4ヶ月掛かってしまいました。実は4月の初旬に間に合うように作業をしていたのですが、予想以上に時間が掛かってしまいました。</p>
+<p>今回は作業時間をメモをしていたのですが、合計は100h程度（メモしてある時間の総計は94.5h）になります。業務時間以外にはなかなか時間が取れないものですね。</p>
+<h4>ローカル環境で開発する場合はシンボリックリンクを使うと便利</h4>
+<p>テンプレートをローカル環境で開発していていると、CSSの変更を頻繁に行う場合の表示確認が非常に面倒です。</p>
+<p>何故かと言うと、テンプレート用に使われる静的ファイル群(CSSやJavaScript、image等)は公開用ディレクトリにアップロードされるので、テンプレートディレクトリにあるファイルに変更を加えても反映されないからです。</p>
+<p><code>EC-CUBE/data/Smarty/templates/TEMPLATE_NAME</code> にテンプレート本体がインストールされますが、</p>
+<p><code>TEMPLATE_NAME/_package/</code> 以下にまとめられているファイルは、管理画面からテンプレートを追加する時に</p>
+<p><code>EC-CUBE/html/user_data/packages/TEMPLATE_NAME/</code> 以下にアップロードされる仕組みになっています。</p>
+<p>htmlディレクトリ、つまり、公開用ディレクトリにあるCSSが参照されるので、<br />
+<code>EC-CUBE/data/Smarty/templates/TEMPLATE_NAME/css</code> の中身を更新しても反映されない&#8230;という事になります。</p>
+<p>完成したテンプレートをインストールする時なら何も問題ないのですが、製作中のテンプレートの場合はガシガシ書いたり消したりしたいので非常に面倒です。</p>
+<h5>解決策</h5>
+<p>そこで <code>EC-CUBE/html/user_data/packages/TEMPLATE_NAME</code> は <code>EC-CUBE/data/Smarty/templates/TEMPLATE_NAME/_package/</code> を参照するようにシンボリックリンクを貼ってしまいます。</p>
+<p>これで、<code>EC-CUBE/data/Smarty/templates/TEMPLATE_NAME/</code> 内のファイルを管理すれば良いだけの環境になります。自分はここを <code>git init</code> してローカルリポジトリを置いています。</p>
+<h2>テンプレートの実装について</h2>
+<p>EC-CUBEの<a href="http://www.ec-cube.net/products/list.php?category_id=7">オーナーズストアで販売されているレスポンシブテンプレート</a>はテンプレートという名前ですが、どうやらプラグインとして作られているようです。</p>
+<p>テンプレートだとphpに変更や追加が一切行えないので、現在はプラグインとして作られているようです。というのも、レスポンシブデザインの場合はスマートフォン用のテンプレートを無効にしなくてはならないのですが、これがphpを変更しなくては実現できないためだと思われます。</p>
+<p>EC-CUBE on BootStrap3は「テンプレート」となりますので、スマートフォン用のテンプレートを無効にするようにphpの変更が必要になります（githubのREADMEに記載されています）← 便利なプラグインが有りました（<a href="http://www.ec-cube.net/products/detail.php?product_id=394">スマートフォン・携帯アクセス制御プラグイン</a>）</p>
+<p>また、EC-CUBE on BootStrap3の場合はphpを一切イジらないというコンセプトのもとで製作していますので、下記2点は無理やり実装している感じになります。</p>
+<h4>カートのバッジ表示</h4>
+<p><a href="http://perl.no-tubo.net/2014/06/03/ec-cube-on-bootstrap3%e3%81%a8%e3%81%84%e3%81%86%e3%83%87%e3%82%b6%e3%82%a4%e3%83%b3%e3%83%86%e3%83%b3%e3%83%97%e3%83%ac%e3%83%bc%e3%83%88%e3%82%92%e4%bd%9c%e3%82%8a%e3%81%be%e3%81%97%e3%81%9f/2014-06-03-17-46-28/" rel="attachment wp-att-4390"><img src="http://perl.no-tubo.net/wp-content/uploads/2014/06/2014-06-03-17.46.28.png" alt="カートのバッジ" width="370" height="120" class="alignnone size-full wp-image-4390" /></a><br />
+PHPをイジらない限りカートブロックのテンプレート変数（カートに入っている商品数）を他のテンプレートでは値を取得出来ません。そのためJavaScriptで無理やり表示しています。カートブロックは常時表示する必要があります。カートブロックを使用していないページではカートのバッジが表示されません。</p>
+<h4>ページネーション</h4>
+<p>EC-CUBEのページネーションは表示部分のHTMLをテンプレートでは変更する事が出来ないためBootStrapのCSSを無理やり適用しています。</p>
+<h2>今後行いたいこと</h2>
+<h4>コードのリファクタリング</h4>
+<p>完成と言いながら書きなぐりのコードが放置されています。CSSの使っていない部分とかコメントアウトしまくり状態だったり、JavaScriptが散らかっていたり。時間が取れた時にボチボチキレイにしていく予定です。</p>
+<h2>他の方のテンプレート</h2>
+<p>BootStrap3で作られている方もいたようです。</p>
+<ul>
+<li><a href="https://github.com/noboo/ECCUBE-TP-bootstrap">noboo/ECCUBE-TP-bootstrap</a></li>
+</ul>
+        </div>
+        <p class="fsize">
+          Filed under:          <a href="http://perl.no-tubo.net/category/web%e3%82%a2%e3%83%97%e3%83%aa/ec-cube/" title="EC-CUBE の投稿をすべて表示" rel="category tag">EC-CUBE</a></p>
+          <p class="fsize">Trackback <a href="http://perl.no-tubo.net/2014/06/03/ec-cube-on-bootstrap3%e3%81%a8%e3%81%84%e3%81%86%e3%83%87%e3%82%b6%e3%82%a4%e3%83%b3%e3%83%86%e3%83%b3%e3%83%97%e3%83%ac%e3%83%bc%e3%83%88%e3%82%92%e4%bd%9c%e3%82%8a%e3%81%be%e3%81%97%e3%81%9f/trackback/" title="Trackback EC-CUBEで無料で使えるレスポンシブのテンプレート「EC-CUBE on BootStrap3」というのを作りました"><abbr title="URI">Uri</abbr></a>
+        </p>
+        <br /><br /><br />
+      </div> 
+    </div> <!-- end post -->
+    <br /><br />
+  </div>
+    <div class="main-content">
+    <div class="postbackground">
+      <div class="datebackground">
+        <span class="datejm">
+          2014年 4月        </span>
+        <span class="datey">
+          13        </span>
+      </div>
+      <div class="postmetadata">
+        <p class="background-postmetadata">
+                  Tags: <a href="http://perl.no-tubo.net/tag/bootstrap/" rel="tag">Bootstrap</a>, <a href="http://perl.no-tubo.net/tag/bootstrap3/" rel="tag">Bootstrap3</a>, <a href="http://perl.no-tubo.net/tag/ec-cube/" rel="tag">EC-CUBE</a>, <a href="http://perl.no-tubo.net/tag/ec-cube2-13/" rel="tag">EC-CUBE2.13</a>, <a href="http://perl.no-tubo.net/tag/gunma-web/" rel="tag">Gunma.web</a>.           
+        <br />
+        <span style="border-top:1px solid #dedede;">
+          Written by 
+          <a href="http://perl.no-tubo.net/author/admin/" title="clicktx による投稿" rel="author">clicktx</a>,
+                     <a href="http://perl.no-tubo.net/2014/04/13/gunma-web16%e3%81%a7%e8%a9%b1%e3%81%97%e3%81%be%e3%81%97%e3%81%9f/#comments" title="Gunma.web#16で話しました へのコメント">Comments (1)</a>         </span>
+        </p>
+              <div class="background-link-pages"></div> 
+                </div>
+
+      <div class="post" id="post-4365"> <!-- begin post -->
+        <div class="posttitle">
+          <div class="tlbackgroundtitle">
+          </div>
+          <div class="trbackgroundtitle">
+          </div><h2>
+            <a href="http://perl.no-tubo.net/2014/04/13/gunma-web16%e3%81%a7%e8%a9%b1%e3%81%97%e3%81%be%e3%81%97%e3%81%9f/" rel="bookmark" title="Gunma.web#16で話しました">
+              Gunma.web#16で話しました</a></h2>
+          <div class="blbackgroundtitle">
+          </div>
+          <div class="brbackgroundtitle">
+          </div>
+        </div>
+        <div class="entry">
+          <p>
+                      </p>
+<p>Gunma.web#16で話してきました。</p>
+<p>発表したスライドはこちら</p>
+<p>開発中となりますが、githubにあげました。リポジトリはこちら。<br />
+<a href="https://github.com/clicktx/eccube-on-bootstrap3">https://github.com/clicktx/eccube-on-bootstrap3</a></p>
+<p><a href="http://eccube-on-bootstrap3.no-tubo.net">デモサイト</a></p>
+<p>ちゃんと出来上がったらエントリー書きます。</p>
+<h3>反省点</h3>
+<p>時間のことを意識しすぎてしまったかも。デモをちょっとやればよかったかな。</p>
+        </div>
+        <p class="fsize">
+          Filed under:          <a href="http://perl.no-tubo.net/category/web%e3%82%a2%e3%83%97%e3%83%aa/ec-cube/" title="EC-CUBE の投稿をすべて表示" rel="category tag">EC-CUBE</a>,<a href="http://perl.no-tubo.net/category/%e5%8b%89%e5%bc%b7%e4%bc%9a/" title="勉強会 の投稿をすべて表示" rel="category tag">勉強会</a></p>
+          <p class="fsize">Trackback <a href="http://perl.no-tubo.net/2014/04/13/gunma-web16%e3%81%a7%e8%a9%b1%e3%81%97%e3%81%be%e3%81%97%e3%81%9f/trackback/" title="Trackback Gunma.web#16で話しました"><abbr title="URI">Uri</abbr></a>
+        </p>
+        <br /><br /><br />
+      </div> 
+    </div> <!-- end post -->
+    <br /><br />
+  </div>
+    <div class="main-content">
+    <div class="postbackground">
+      <div class="datebackground">
+        <span class="datejm">
+          2014年 4月        </span>
+        <span class="datey">
+          5        </span>
+      </div>
+      <div class="postmetadata">
+        <p class="background-postmetadata">
+                  Tags: <a href="http://perl.no-tubo.net/tag/bootstrap3/" rel="tag">Bootstrap3</a>.           
+        <br />
+        <span style="border-top:1px solid #dedede;">
+          Written by 
+          <a href="http://perl.no-tubo.net/author/admin/" title="clicktx による投稿" rel="author">clicktx</a>,
+                     <a href="http://perl.no-tubo.net/2014/04/05/bootstrap3%e3%81%a7%e8%a7%92%e4%b8%b8%e3%83%86%e3%83%bc%e3%83%96%e3%83%ab%e3%81%afcss%e3%81%ae%e8%bf%bd%e5%8a%a0%e7%84%a1%e3%81%97%e3%81%a7%e5%87%ba%e6%9d%a5%e3%82%8b%e3%82%88/#respond" title="Bootstrap3で角丸テーブルはCSSの追加無しで出来るよ へのコメント">Comments (0)</a>         </span>
+        </p>
+              <div class="background-link-pages"></div> 
+                </div>
+
+      <div class="post" id="post-4357"> <!-- begin post -->
+        <div class="posttitle">
+          <div class="tlbackgroundtitle">
+          </div>
+          <div class="trbackgroundtitle">
+          </div><h2>
+            <a href="http://perl.no-tubo.net/2014/04/05/bootstrap3%e3%81%a7%e8%a7%92%e4%b8%b8%e3%83%86%e3%83%bc%e3%83%96%e3%83%ab%e3%81%afcss%e3%81%ae%e8%bf%bd%e5%8a%a0%e7%84%a1%e3%81%97%e3%81%a7%e5%87%ba%e6%9d%a5%e3%82%8b%e3%82%88/" rel="bookmark" title="Bootstrap3で角丸テーブルはCSSの追加無しで出来るよ">
+              Bootstrap3で角丸テーブルはCSSの追加無しで出来るよ</a></h2>
+          <div class="blbackgroundtitle">
+          </div>
+          <div class="brbackgroundtitle">
+          </div>
+        </div>
+        <div class="entry">
+          <p>
+                      </p>
+<p><a href="http://sachips.byeto.jp/html_css/bootstrap3-table-border-radius.html">Bootstrap3でテーブルを角丸にする方法 | IT女子のお気に入りフォルダ</a><br />
+こちらのエントリーを読んでてメモしておく。</p>
+<p>classに panel を使えば角丸テーブルを実現できます。</p>
+<p></p><!-- Crayon Syntax Highlighter v2.6.5 -->
+
+        <div id="crayon-5410f4dd9304e022608657" class="crayon-syntax crayon-theme-github crayon-font-monaco crayon-os-mac print-yes notranslate" data-settings=" minimize scroll-mouseover" style=" max-width: 635px; margin-bottom: 30px; margin-left: 12px; font-size: 12px !important; line-height: 15px !important;">
+        
+            <div class="crayon-toolbar" data-settings=" show" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-title">Bootstrap3で角丸テーブル</span>
+            <div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button" title="行番号ON/OFF"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="ハイライト表示ON/OFF"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button" title="Toggle Line Wrap"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="Expand Code"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="Copy"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="新しいウィンドウでコードを開く"><div class="crayon-button-icon"></div></div><span class="crayon-language">XHTML</span></div></div>
+            <div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+            <div class="crayon-plain-wrap"><textarea wrap="soft" class="crayon-plain print-no" data-settings="dblclick" readonly style="-moz-tab-size:2; -o-tab-size:2; -webkit-tab-size:2; tab-size:2; font-size: 12px !important; line-height: 15px !important;">
+
+&lt;div class="panel panel-default"&gt;
+  &lt;table class="table table-bordered"&gt;
+  ....
+  &lt;/table&gt;
+&lt;/div&gt;
+</textarea></div>
+            <div class="crayon-main" style=" max-width: 635px;">
+                <table class="crayon-table">
+                    <tr class="crayon-row">
+                <td class="crayon-nums " data-settings="hide">
+                    <div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5410f4dd9304e022608657-1">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5410f4dd9304e022608657-2">2</div><div class="crayon-num" data-line="crayon-5410f4dd9304e022608657-3">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5410f4dd9304e022608657-4">4</div><div class="crayon-num" data-line="crayon-5410f4dd9304e022608657-5">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-5410f4dd9304e022608657-6">6</div><div class="crayon-num" data-line="crayon-5410f4dd9304e022608657-7">7</div></div>
+                </td>
+                        <td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-line" id="crayon-5410f4dd9304e022608657-1">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5410f4dd9304e022608657-2"><span class="crayon-r ">&lt;div </span><span class="crayon-e ">class</span><span class="crayon-o">=</span><span class="crayon-s ">"panel panel-default"</span><span class="crayon-r ">&gt;</span></div><div class="crayon-line" id="crayon-5410f4dd9304e022608657-3"><span class="crayon-i ">&nbsp;&nbsp;</span><span class="crayon-r ">&lt;table </span><span class="crayon-e ">class</span><span class="crayon-o">=</span><span class="crayon-s ">"table table-bordered"</span><span class="crayon-r ">&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5410f4dd9304e022608657-4"><span class="crayon-i ">&nbsp;&nbsp;....</span></div><div class="crayon-line" id="crayon-5410f4dd9304e022608657-5"><span class="crayon-i ">&nbsp;&nbsp;</span><span class="crayon-r ">&lt;/table&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5410f4dd9304e022608657-6"><span class="crayon-r ">&lt;/div&gt;</span></div><div class="crayon-line" id="crayon-5410f4dd9304e022608657-7">&nbsp;</div></div></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+<!-- [Format Time: 0.0005 seconds] -->
+<p></p>
+        </div>
+        <p class="fsize">
+          Filed under:          <a href="http://perl.no-tubo.net/category/%c2%a0web/" title=" web の投稿をすべて表示" rel="category tag"> web</a></p>
+          <p class="fsize">Trackback <a href="http://perl.no-tubo.net/2014/04/05/bootstrap3%e3%81%a7%e8%a7%92%e4%b8%b8%e3%83%86%e3%83%bc%e3%83%96%e3%83%ab%e3%81%afcss%e3%81%ae%e8%bf%bd%e5%8a%a0%e7%84%a1%e3%81%97%e3%81%a7%e5%87%ba%e6%9d%a5%e3%82%8b%e3%82%88/trackback/" title="Trackback Bootstrap3で角丸テーブルはCSSの追加無しで出来るよ"><abbr title="URI">Uri</abbr></a>
+        </p>
+        <br /><br /><br />
+      </div> 
+    </div> <!-- end post -->
+    <br /><br />
+  </div>
+    <div class="main-content">
+    <div class="postbackground">
+      <div class="datebackground">
+        <span class="datejm">
+          2014年 3月        </span>
+        <span class="datey">
+          15        </span>
+      </div>
+      <div class="postmetadata">
+        <p class="background-postmetadata">
+                  Tags: <a href="http://perl.no-tubo.net/tag/dns/" rel="tag">DNS</a>, <a href="http://perl.no-tubo.net/tag/postfix/" rel="tag">postfix</a>, <a href="http://perl.no-tubo.net/tag/spf/" rel="tag">SPF</a>, <a href="http://perl.no-tubo.net/tag/%e3%83%a1%e3%83%a2/" rel="tag">メモ</a>, <a href="http://perl.no-tubo.net/tag/%e3%83%a1%e3%83%bc%e3%83%ab%e3%82%b5%e3%83%bc%e3%83%90/" rel="tag">メールサーバ</a>, <a href="http://perl.no-tubo.net/tag/%e8%bf%b7%e6%83%91%e3%83%a1%e3%83%bc%e3%83%ab%e5%af%be%e7%ad%96/" rel="tag">迷惑メール対策</a>.           
+        <br />
+        <span style="border-top:1px solid #dedede;">
+          Written by 
+          <a href="http://perl.no-tubo.net/author/admin/" title="clicktx による投稿" rel="author">clicktx</a>,
+                     <a href="http://perl.no-tubo.net/2014/03/15/%e3%83%a1%e3%83%a2-%e8%bf%b7%e6%83%91%e3%83%a1%e3%83%bc%e3%83%ab%e5%af%be%e7%ad%96-spf%e3%81%ae%e6%9b%b8%e3%81%8d%e6%96%b9%e3%81%aa%e3%81%a9/#respond" title="[メモ] 迷惑メール対策 SPFの書き方など へのコメント">Comments (0)</a>         </span>
+        </p>
+              <div class="background-link-pages"></div> 
+                </div>
+
+      <div class="post" id="post-4338"> <!-- begin post -->
+        <div class="posttitle">
+          <div class="tlbackgroundtitle">
+          </div>
+          <div class="trbackgroundtitle">
+          </div><h2>
+            <a href="http://perl.no-tubo.net/2014/03/15/%e3%83%a1%e3%83%a2-%e8%bf%b7%e6%83%91%e3%83%a1%e3%83%bc%e3%83%ab%e5%af%be%e7%ad%96-spf%e3%81%ae%e6%9b%b8%e3%81%8d%e6%96%b9%e3%81%aa%e3%81%a9/" rel="bookmark" title="[メモ] 迷惑メール対策 SPFの書き方など">
+              [メモ] 迷惑メール対策 SPFの書き方など</a></h2>
+          <div class="blbackgroundtitle">
+          </div>
+          <div class="brbackgroundtitle">
+          </div>
+        </div>
+        <div class="entry">
+          <p>
+                      </p>
+<p>同サイトのページだが探しにくいのでメモ。</p>
+<p><a href="http://salt.iajapan.org/wpmu/anti_spam/admin/tech/explanation/spf/">SPF（Sender Policy Framework） : 迷惑メール対策委員会</a><br />
+SPFの歴史的背景や、SPF設定時のプロパティの解説や記述例。</p>
+<p><a href="http://salt.iajapan.org/wpmu/anti_spam/admin/operation/information/spf_i01/">間違いから学ぶSPFレコードの正しい書き方 : 迷惑メール対策委員会</a><br />
+SPFレコードを設定する際に間違いやすい例を参考に解説。</p>
+        </div>
+        <p class="fsize">
+          Filed under:          <a href="http://perl.no-tubo.net/category/%e3%82%b5%e3%83%bc%e3%83%90%e7%ae%a1%e7%90%86/%e3%83%a1%e3%83%bc%e3%83%ab%e3%82%b5%e3%83%bc%e3%83%90/postfix/" title="postfix の投稿をすべて表示" rel="category tag">postfix</a>,<a href="http://perl.no-tubo.net/category/%e3%82%b5%e3%83%bc%e3%83%90%e7%ae%a1%e7%90%86/%e3%83%a1%e3%83%a2/" title="メモ の投稿をすべて表示" rel="category tag">メモ</a></p>
+          <p class="fsize">Trackback <a href="http://perl.no-tubo.net/2014/03/15/%e3%83%a1%e3%83%a2-%e8%bf%b7%e6%83%91%e3%83%a1%e3%83%bc%e3%83%ab%e5%af%be%e7%ad%96-spf%e3%81%ae%e6%9b%b8%e3%81%8d%e6%96%b9%e3%81%aa%e3%81%a9/trackback/" title="Trackback [メモ] 迷惑メール対策 SPFの書き方など"><abbr title="URI">Uri</abbr></a>
+        </p>
+        <br /><br /><br />
+      </div> 
+    </div> <!-- end post -->
+    <br /><br />
+  </div>
+    <div class="main-content">
+    <div class="postbackground">
+      <div class="datebackground">
+        <span class="datejm">
+          2014年 3月        </span>
+        <span class="datey">
+          12        </span>
+      </div>
+      <div class="postmetadata">
+        <p class="background-postmetadata">
+                  Tags: <a href="http://perl.no-tubo.net/tag/bootstrap/" rel="tag">Bootstrap</a>, <a href="http://perl.no-tubo.net/tag/bootstrap3/" rel="tag">Bootstrap3</a>, <a href="http://perl.no-tubo.net/tag/ec-cube/" rel="tag">EC-CUBE</a>, <a href="http://perl.no-tubo.net/tag/ec-cube2-13/" rel="tag">EC-CUBE2.13</a>.           
+        <br />
+        <span style="border-top:1px solid #dedede;">
+          Written by 
+          <a href="http://perl.no-tubo.net/author/admin/" title="clicktx による投稿" rel="author">clicktx</a>,
+                     <a href="http://perl.no-tubo.net/2014/03/12/bootstrap3%e3%81%a7%e4%bd%9c%e3%81%a3%e3%81%9fec-cube%e7%94%a8%e3%81%ae%e3%83%ac%e3%82%b9%e3%83%9d%e3%83%b3%e3%82%b7%e3%83%96%e3%83%87%e3%82%b6%e3%82%a4%e3%83%b3%e3%83%86%e3%83%b3%e3%83%97%e3%83%ac/#respond" title="Bootstrap3で作ったEC-CUBE用のレスポンシブデザインテンプレートをGunma.web #16にて配布します！ へのコメント">Comments (0)</a>         </span>
+        </p>
+              <div class="background-link-pages"></div> 
+                </div>
+
+      <div class="post" id="post-4303"> <!-- begin post -->
+        <div class="posttitle">
+          <div class="tlbackgroundtitle">
+          </div>
+          <div class="trbackgroundtitle">
+          </div><h2>
+            <a href="http://perl.no-tubo.net/2014/03/12/bootstrap3%e3%81%a7%e4%bd%9c%e3%81%a3%e3%81%9fec-cube%e7%94%a8%e3%81%ae%e3%83%ac%e3%82%b9%e3%83%9d%e3%83%b3%e3%82%b7%e3%83%96%e3%83%87%e3%82%b6%e3%82%a4%e3%83%b3%e3%83%86%e3%83%b3%e3%83%97%e3%83%ac/" rel="bookmark" title="Bootstrap3で作ったEC-CUBE用のレスポンシブデザインテンプレートをGunma.web #16にて配布します！">
+              Bootstrap3で作ったEC-CUBE用のレスポンシブデザインテンプレートをGunma.web #16にて配布します！</a></h2>
+          <div class="blbackgroundtitle">
+          </div>
+          <div class="brbackgroundtitle">
+          </div>
+        </div>
+        <div class="entry">
+          <p>
+                      </p>
+<a href="http://perl.no-tubo.net/2014/03/12/bootstrap3%e3%81%a7%e4%bd%9c%e3%81%a3%e3%81%9fec-cube%e7%94%a8%e3%81%ae%e3%83%ac%e3%82%b9%e3%83%9d%e3%83%b3%e3%82%b7%e3%83%96%e3%83%87%e3%82%b6%e3%82%a4%e3%83%b3%e3%83%86%e3%83%b3%e3%83%97%e3%83%ac/" title="Bootstrap3で作ったEC-CUBE用のレスポンシブデザインテンプレートをGunma.web #16にて配布します！"><img width="500" height="198" src="http://perl.no-tubo.net/wp-content/uploads/2014/03/2014-03-12-18.20.07-500x198.png" class="aligncenter wp-post-image" alt="EC-CUBE on Bootstrap3" /></a><p>2014年4月12日（土）開催予定の <a href="http://gunmaweb.doorkeeper.jp/events/8784">Gunma.web #16</a> にて「EC-CUBE on Bootstrap3」という内容で発表予定なのですが、開催前に少しだけ告知します。</p>
+<p>今回は重い腰を上げて、Bootstrap3に触れてみたのでその事についてのお話をしようかと思っています。開催前に告知とかネタバレなのですが、笑いとオチをふんだんに盛りこまなくてはいけないプレッシャーからは開放される気がします。</p>
+<p>当日はTwitter Bootstrap3で作ったEC-CUBE 2.13用のレスポンシブデザインテンプレート（<a href="http://www.ec-cube.net/products/list.php?category_id=23">16.8万円相当？？？</a>）<a href="#1">*1</a> をご希望の方に配布したいと思っています！</p>
+<p>そのためには、当日までに仕上げる必要がありますね！自分でハードルを上げている感満載なのですが、残り1ヶ月あるのでとりあえず頑張ります！</p>
+<p>Gunma.web #16の募集人数は30名となっています。今のところ残数20名程。下記リンク先から参加登録できますのでご覧下さい！</p>
+<ul>
+<li>Gunma.web #16 開催概要・参加申し込みページ
+<ul>
+<li><a href="http://gunmaweb.doorkeeper.jp/events/8784">Gunma.web #16 &#8211; Gunma.web | Doorkeeper</a></li>
+</ul>
+</li>
+<li>Gunma.web公式サイト
+<ul>
+<li><a href="http://gunma-web.org">Gunma.web 群馬でWebの勉強会</a></li>
+</ul>
+</li>
+</ul>
+<p><a id="1" href="#1">*1</a> あくまでも販売されているテンプレートの価格です。16万8千円というと足代引いてもお釣りがくるので遠方からも参加する価値がありますね！:)</p>
+        </div>
+        <p class="fsize">
+          Filed under:          <a href="http://perl.no-tubo.net/category/web%e3%82%a2%e3%83%97%e3%83%aa/ec-cube/" title="EC-CUBE の投稿をすべて表示" rel="category tag">EC-CUBE</a>,<a href="http://perl.no-tubo.net/category/%e5%8b%89%e5%bc%b7%e4%bc%9a/" title="勉強会 の投稿をすべて表示" rel="category tag">勉強会</a></p>
+          <p class="fsize">Trackback <a href="http://perl.no-tubo.net/2014/03/12/bootstrap3%e3%81%a7%e4%bd%9c%e3%81%a3%e3%81%9fec-cube%e7%94%a8%e3%81%ae%e3%83%ac%e3%82%b9%e3%83%9d%e3%83%b3%e3%82%b7%e3%83%96%e3%83%87%e3%82%b6%e3%82%a4%e3%83%b3%e3%83%86%e3%83%b3%e3%83%97%e3%83%ac/trackback/" title="Trackback Bootstrap3で作ったEC-CUBE用のレスポンシブデザインテンプレートをGunma.web #16にて配布します！"><abbr title="URI">Uri</abbr></a>
+        </p>
+        <br /><br /><br />
+      </div> 
+    </div> <!-- end post -->
+    <br /><br />
+  </div>
+    <div class="navigationpost">
+    <!-- begin pages navigation -->
+    <a href="http://perl.no-tubo.net/" >&laquo; Newer Posts</a> - <a href="http://perl.no-tubo.net/page/3/" >Older Posts &raquo;</a>  </div> 
+  <!-- end pages navigation -->
+</div> 
+<!-- end main div -->
+ 
+
+<div id="sidebar"><!-- sidebard div -->
+<!-- Begin Banner 125x125 -->
+  
+  <!-- End Banner 125x125 -->  
+  <!-- begin Widget --> 
+<div id="text-10" class="backgroundlist widget_text"><div class="listtitle"><div class="tlbackgroundtitle"></div>
+      <div class="trbackgroundtitle"></div><h2>AdSense</h2>
+      <div class="blbackgroundtitle"></div>
+      <div class="brbackgroundtitle"></div>
+      </div><div class="contentbox">            <div class="textwidget"><div align="center">
+<script type="text/javascript"><!--
+google_ad_client = "pub-8626441315371647";
+/* blog 336x280, 作成済み 09/10/07 */
+google_ad_slot = "6313065465";
+google_ad_width = 336;
+google_ad_height = 280;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div></div>
+        </div></div><div id="text-4" class="backgroundlist widget_text"><div class="listtitle"><div class="tlbackgroundtitle"></div>
+      <div class="trbackgroundtitle"></div><h2>無料の広告交換でアクセスアップ</h2>
+      <div class="blbackgroundtitle"></div>
+      <div class="brbackgroundtitle"></div>
+      </div><div class="contentbox">            <div class="textwidget"><center>
+<!-- Start Script -->
+<script><!--
+clicktx_client="17189";
+clicktx_adformat="350x250";
+clicktx_round_value="0";
+clicktx_color_border="FFFFFF";
+clicktx_color_bg="FFFFFF";
+clicktx_color_link="0066CC";
+clicktx_color_text="333333";
+clicktx_color_url="99CC00";
+
+(function(){var p=(("https:"==document.location.protocol)?"https://":"http://");
+document.write('<scri'+'pt src="'+p+'www.clicktx.jp/ads/index.js" charset="Shift_JIS"></scri'+'pt>');})();
+//--></script>
+<!-- End Script -->
+</center></div>
+        </div></div><div id="tag_cloud-3" class="backgroundlist widget_tag_cloud"><div class="listtitle"><div class="tlbackgroundtitle"></div>
+      <div class="trbackgroundtitle"></div><h2>タグ</h2>
+      <div class="blbackgroundtitle"></div>
+      <div class="brbackgroundtitle"></div>
+      </div><div class="contentbox"><div class="tagcloud"><a href='http://perl.no-tubo.net/tag/apache/' class='tag-link-17' title='6件のトピック' style='font-size: 11.181818181818pt;'>Apache</a>
+<a href='http://perl.no-tubo.net/tag/bootstrap/' class='tag-link-185' title='7件のトピック' style='font-size: 11.818181818182pt;'>Bootstrap</a>
+<a href='http://perl.no-tubo.net/tag/bootstrap3/' class='tag-link-254' title='5件のトピック' style='font-size: 10.290909090909pt;'>Bootstrap3</a>
+<a href='http://perl.no-tubo.net/tag/centos/' class='tag-link-63' title='4件のトピック' style='font-size: 9.2727272727273pt;'>centOS</a>
+<a href='http://perl.no-tubo.net/tag/cgi/' class='tag-link-113' title='3件のトピック' style='font-size: 8pt;'>CGI</a>
+<a href='http://perl.no-tubo.net/tag/cpanm/' class='tag-link-169' title='3件のトピック' style='font-size: 8pt;'>cpanm</a>
+<a href='http://perl.no-tubo.net/tag/css/' class='tag-link-37' title='4件のトピック' style='font-size: 9.2727272727273pt;'>CSS</a>
+<a href='http://perl.no-tubo.net/tag/dbi/' class='tag-link-115' title='5件のトピック' style='font-size: 10.290909090909pt;'>DBI</a>
+<a href='http://perl.no-tubo.net/tag/dbixcustom/' class='tag-link-147' title='3件のトピック' style='font-size: 8pt;'>DBIx::Custom</a>
+<a href='http://perl.no-tubo.net/tag/ec-cube/' class='tag-link-78' title='10件のトピック' style='font-size: 13.6pt;'>EC-CUBE</a>
+<a href='http://perl.no-tubo.net/tag/ec-cube2-13/' class='tag-link-253' title='5件のトピック' style='font-size: 10.290909090909pt;'>EC-CUBE2.13</a>
+<a href='http://perl.no-tubo.net/tag/ftp/' class='tag-link-41' title='3件のトピック' style='font-size: 8pt;'>FTP</a>
+<a href='http://perl.no-tubo.net/tag/groonga/' class='tag-link-114' title='5件のトピック' style='font-size: 10.290909090909pt;'>groonga</a>
+<a href='http://perl.no-tubo.net/tag/gunma-web/' class='tag-link-187' title='11件のトピック' style='font-size: 14.109090909091pt;'>Gunma.web</a>
+<a href='http://perl.no-tubo.net/tag/javascript/' class='tag-link-10' title='6件のトピック' style='font-size: 11.181818181818pt;'>JavaScript</a>
+<a href='http://perl.no-tubo.net/tag/mac/' class='tag-link-22' title='16件のトピック' style='font-size: 16.018181818182pt;'>Mac</a>
+<a href='http://perl.no-tubo.net/tag/macports/' class='tag-link-170' title='4件のトピック' style='font-size: 9.2727272727273pt;'>MacPorts</a>
+<a href='http://perl.no-tubo.net/tag/mecab/' class='tag-link-108' title='4件のトピック' style='font-size: 9.2727272727273pt;'>mecab</a>
+<a href='http://perl.no-tubo.net/tag/mojolicious/' class='tag-link-130' title='10件のトピック' style='font-size: 13.6pt;'>Mojolicious</a>
+<a href='http://perl.no-tubo.net/tag/mroonga/' class='tag-link-197' title='3件のトピック' style='font-size: 8pt;'>mroonga</a>
+<a href='http://perl.no-tubo.net/tag/mysql/' class='tag-link-5' title='18件のトピック' style='font-size: 16.654545454545pt;'>MySQL</a>
+<a href='http://perl.no-tubo.net/tag/nginx/' class='tag-link-136' title='5件のトピック' style='font-size: 10.290909090909pt;'>Nginx</a>
+<a href='http://perl.no-tubo.net/tag/paypal/' class='tag-link-30' title='8件のトピック' style='font-size: 12.454545454545pt;'>PayPal</a>
+<a href='http://perl.no-tubo.net/tag/perl/' class='tag-link-3' title='49件のトピック' style='font-size: 22pt;'>perl</a>
+<a href='http://perl.no-tubo.net/tag/perl%e3%83%a2%e3%82%b8%e3%83%a5%e3%83%bc%e3%83%ab/' class='tag-link-8' title='5件のトピック' style='font-size: 10.290909090909pt;'>perlモジュール</a>
+<a href='http://perl.no-tubo.net/tag/php/' class='tag-link-61' title='7件のトピック' style='font-size: 11.818181818182pt;'>PHP</a>
+<a href='http://perl.no-tubo.net/tag/postfix/' class='tag-link-27' title='15件のトピック' style='font-size: 15.636363636364pt;'>postfix</a>
+<a href='http://perl.no-tubo.net/tag/postfixadmin/' class='tag-link-29' title='3件のトピック' style='font-size: 8pt;'>postfixadmin</a>
+<a href='http://perl.no-tubo.net/tag/postgresql/' class='tag-link-58' title='3件のトピック' style='font-size: 8pt;'>PostgreSQL</a>
+<a href='http://perl.no-tubo.net/tag/procmail/' class='tag-link-50' title='3件のトピック' style='font-size: 8pt;'>procmail</a>
+<a href='http://perl.no-tubo.net/tag/sftp/' class='tag-link-42' title='3件のトピック' style='font-size: 8pt;'>SFTP</a>
+<a href='http://perl.no-tubo.net/tag/speedycgi/' class='tag-link-99' title='6件のトピック' style='font-size: 11.181818181818pt;'>speedyCGI</a>
+<a href='http://perl.no-tubo.net/tag/ssl/' class='tag-link-59' title='3件のトピック' style='font-size: 8pt;'>SSL</a>
+<a href='http://perl.no-tubo.net/tag/sublimetext2/' class='tag-link-194' title='5件のトピック' style='font-size: 10.290909090909pt;'>SublimeText2</a>
+<a href='http://perl.no-tubo.net/tag/webmin/' class='tag-link-6' title='5件のトピック' style='font-size: 10.290909090909pt;'>webmin</a>
+<a href='http://perl.no-tubo.net/tag/yapc/' class='tag-link-244' title='3件のトピック' style='font-size: 8pt;'>YAPC</a>
+<a href='http://perl.no-tubo.net/tag/yum/' class='tag-link-62' title='4件のトピック' style='font-size: 9.2727272727273pt;'>yum</a>
+<a href='http://perl.no-tubo.net/tag/%e3%82%a8%e3%83%87%e3%82%a3%e3%82%bf/' class='tag-link-156' title='3件のトピック' style='font-size: 8pt;'>エディタ</a>
+<a href='http://perl.no-tubo.net/tag/%e3%82%af%e3%83%ac%e3%82%b8%e3%83%83%e3%83%88%e3%82%ab%e3%83%bc%e3%83%89%e6%b1%ba%e6%b8%88/' class='tag-link-48' title='5件のトピック' style='font-size: 10.290909090909pt;'>クレジットカード決済</a>
+<a href='http://perl.no-tubo.net/tag/%e3%83%87%e3%82%b6%e3%82%a4%e3%83%b3/' class='tag-link-186' title='3件のトピック' style='font-size: 8pt;'>デザイン</a>
+<a href='http://perl.no-tubo.net/tag/%e3%83%a1%e3%83%bc%e3%83%ab%e3%82%b5%e3%83%bc%e3%83%90/' class='tag-link-7' title='13件のトピック' style='font-size: 15pt;'>メールサーバ</a>
+<a href='http://perl.no-tubo.net/tag/%e4%bb%ae%e6%83%b3%e5%8c%96/' class='tag-link-84' title='3件のトピック' style='font-size: 8pt;'>仮想化</a>
+<a href='http://perl.no-tubo.net/tag/%e5%8b%89%e5%bc%b7%e4%bc%9a/' class='tag-link-188' title='19件のトピック' style='font-size: 16.909090909091pt;'>勉強会</a>
+<a href='http://perl.no-tubo.net/tag/%e8%bf%b7%e6%83%91%e3%83%a1%e3%83%bc%e3%83%ab%e5%af%be%e7%ad%96/' class='tag-link-141' title='5件のトピック' style='font-size: 10.290909090909pt;'>迷惑メール対策</a>
+<a href='http://perl.no-tubo.net/tag/%e9%96%8b%e7%99%ba%e7%92%b0%e5%a2%83/' class='tag-link-157' title='4件のトピック' style='font-size: 9.2727272727273pt;'>開発環境</a></div>
+</div></div><div id="text-9" class="backgroundlist widget_text"><div class="listtitle"><div class="tlbackgroundtitle"></div>
+      <div class="trbackgroundtitle"></div><h2>人気の記事</h2>
+      <div class="blbackgroundtitle"></div>
+      <div class="brbackgroundtitle"></div>
+      </div><div class="contentbox">            <div class="textwidget"><script language="javascript" type="text/javascript" src="http://b.hatena.ne.jp/js/widget.js" charset="utf-8"></script>
+<script language="javascript" type="text/javascript">
+Hatena.BookmarkWidget.url   = "http://perl.no-tubo.net/";
+Hatena.BookmarkWidget.title = "エントリー";
+Hatena.BookmarkWidget.sort  = "count";
+Hatena.BookmarkWidget.width = 350;
+Hatena.BookmarkWidget.num   = 10;
+Hatena.BookmarkWidget.theme = "notheme";
+Hatena.BookmarkWidget.load();
+</script></div>
+        </div></div>        <div id="recent-posts-3" class="backgroundlist widget_recent_entries"><div class="listtitle">       <div class="tlbackgroundtitle"></div>
+      <div class="trbackgroundtitle"></div><h2>最近の投稿</h2>
+      <div class="blbackgroundtitle"></div>
+      <div class="brbackgroundtitle"></div>
+      </div><div class="contentbox">        <ul>
+                    <li>
+                <a href="http://perl.no-tubo.net/2014/09/08/mojolicious%e3%82%92nginx%e3%81%ae%e5%be%8c%e3%82%8d%e3%81%a7%e5%8b%95%e3%81%8b%e3%81%99%e6%99%82%e3%81%abhttps%e3%82%92%e6%a4%9c%e7%9f%a5%e3%81%99%e3%82%8b%e3%81%ab%e3%81%af/">mojoliciousをNginxの後ろで動かす時にHTTPSを検知するには</a>
+                        </li>
+                    <li>
+                <a href="http://perl.no-tubo.net/2014/08/31/yapcasia-2014%e3%81%ab%e8%a1%8c%e3%81%a3%e3%81%a6%e3%81%8d%e3%81%9f%e3%82%88%ef%bc%812%e6%97%a5%e7%9b%ae/">YAPC::Asia 2014に行ってきたよ！2日目</a>
+                        </li>
+                    <li>
+                <a href="http://perl.no-tubo.net/2014/08/30/yapcasia-2014%e3%81%ab%e8%a1%8c%e3%81%a3%e3%81%a6%e3%81%8d%e3%81%9f%e3%82%88%ef%bc%811%e6%97%a5%e7%9b%ae/">YAPC::Asia 2014に行ってきたよ！1日目</a>
+                        </li>
+                    <li>
+                <a href="http://perl.no-tubo.net/2014/07/14/mishima-pm-1-%e3%81%ab%e8%a1%8c%e3%81%a3%e3%81%a6%e3%81%8d%e3%81%9f%e3%82%88/">Mishima.pm #1 に行ってきたよ</a>
+                        </li>
+                    <li>
+                <a href="http://perl.no-tubo.net/2014/06/06/%e3%81%a8%e3%82%8a%e3%81%82%e3%81%88%e3%81%9a3%e5%80%8b%e3%81%bb%e3%81%a9%e3%81%ae%e3%83%97%e3%83%a9%e3%82%b0%e3%82%a4%e3%83%b3%e3%82%92ec-cube-on-bootstrap3%e3%81%ab%e5%af%be%e5%bf%9c%e3%81%95/">とりあえず3個ほどのプラグインをEC-CUBE on BootStrap3に対応させてみた</a>
+                        </li>
+                    <li>
+                <a href="http://perl.no-tubo.net/2014/06/03/ec-cube-on-bootstrap3%e3%81%a8%e3%81%84%e3%81%86%e3%83%87%e3%82%b6%e3%82%a4%e3%83%b3%e3%83%86%e3%83%b3%e3%83%97%e3%83%ac%e3%83%bc%e3%83%88%e3%82%92%e4%bd%9c%e3%82%8a%e3%81%be%e3%81%97%e3%81%9f/">EC-CUBEで無料で使えるレスポンシブのテンプレート「EC-CUBE on BootStrap3」というのを作りました</a>
+                        </li>
+                    <li>
+                <a href="http://perl.no-tubo.net/2014/04/13/gunma-web16%e3%81%a7%e8%a9%b1%e3%81%97%e3%81%be%e3%81%97%e3%81%9f/">Gunma.web#16で話しました</a>
+                        </li>
+                    <li>
+                <a href="http://perl.no-tubo.net/2014/04/05/bootstrap3%e3%81%a7%e8%a7%92%e4%b8%b8%e3%83%86%e3%83%bc%e3%83%96%e3%83%ab%e3%81%afcss%e3%81%ae%e8%bf%bd%e5%8a%a0%e7%84%a1%e3%81%97%e3%81%a7%e5%87%ba%e6%9d%a5%e3%82%8b%e3%82%88/">Bootstrap3で角丸テーブルはCSSの追加無しで出来るよ</a>
+                        </li>
+                    <li>
+                <a href="http://perl.no-tubo.net/2014/03/15/%e3%83%a1%e3%83%a2-%e8%bf%b7%e6%83%91%e3%83%a1%e3%83%bc%e3%83%ab%e5%af%be%e7%ad%96-spf%e3%81%ae%e6%9b%b8%e3%81%8d%e6%96%b9%e3%81%aa%e3%81%a9/">[メモ] 迷惑メール対策 SPFの書き方など</a>
+                        </li>
+                    <li>
+                <a href="http://perl.no-tubo.net/2014/03/12/bootstrap3%e3%81%a7%e4%bd%9c%e3%81%a3%e3%81%9fec-cube%e7%94%a8%e3%81%ae%e3%83%ac%e3%82%b9%e3%83%9d%e3%83%b3%e3%82%b7%e3%83%96%e3%83%87%e3%82%b6%e3%82%a4%e3%83%b3%e3%83%86%e3%83%b3%e3%83%97%e3%83%ac/">Bootstrap3で作ったEC-CUBE用のレスポンシブデザインテンプレートをGunma.web #16にて配布します！</a>
+                        </li>
+                    <li>
+                <a href="http://perl.no-tubo.net/2014/02/13/ec-cube2-13_-dtb_blocposition_target_id/">EC-CUBEのテンプレートで初期レイアウトを設定するdtb_blocpositionテーブルのtarget_idに対応するブロック早見表がないので作った</a>
+                        </li>
+                    <li>
+                <a href="http://perl.no-tubo.net/2014/01/05/gunma-web15%e3%81%a7%e3%81%97%e3%82%83%e3%81%b9%e3%82%8a%e3%81%be%e3%81%97%e3%81%9f/">Gunma.web#15でしゃべりました</a>
+                        </li>
+                </ul>
+        </div></div><div id="recent-comments-3" class="backgroundlist widget_recent_comments"><div class="listtitle"><div class="tlbackgroundtitle"></div>
+      <div class="trbackgroundtitle"></div><h2>最近のコメント</h2>
+      <div class="blbackgroundtitle"></div>
+      <div class="brbackgroundtitle"></div>
+      </div><div class="contentbox"><ul id="recentcomments"><li class="recentcomments"><a href="http://perl.no-tubo.net/2013/05/20/mojolicious%e3%82%a2%e3%83%97%e3%83%aa%e3%82%92-upstart-sarverstarter-starlet-%e3%81%a7%e9%81%8b%e7%94%a8%e3%81%97%e3%81%a6%e3%81%bf%e3%82%8b/comment-page-1/#comment-24623">Mojoliciousアプリを UpStart + Sarver::Starter + Starlet で運用してみる</a> に <a href='http://perl.no-tubo.net/2014/08/30/yapcasia-2014%e3%81%ab%e8%a1%8c%e3%81%a3%e3%81%a6%e3%81%8d%e3%81%9f%e3%82%88%ef%bc%811%e6%97%a5%e7%9b%ae/' rel='external nofollow' class='url'>YAPC::Asia 2014に行ってきたよ！1日目 | clicktx::Tech::Memo</a> より</li><li class="recentcomments"><a href="http://perl.no-tubo.net/2011/01/06/%e3%83%a1%e3%83%bc%e3%83%ab%e3%82%b5%e3%83%bc%e3%83%90%e6%a7%8b%e7%af%89%e3%81%ae%e3%81%be%e3%81%a8%e3%82%81%ef%bc%88%e8%a4%87%e6%95%b0%e3%81%ae%e3%83%90%e3%83%bc%e3%83%81%e3%83%a3%e3%83%ab%e3%83%89/comment-page-1/#comment-17336">メールサーバ構築のまとめ（複数のバーチャルドメイン+Postfix+MySQL+Dovecot+procmail+Clam AntiVirus+spamassassin+postfixadmin）</a> に <a href='https://abeerforyou.com/?p=627' rel='external nofollow' class='url'>Procmail（Postfix + Virtual Host/Domain）で迷惑メールをフィルタする | abeerforyou.com</a> より</li><li class="recentcomments"><a href="http://perl.no-tubo.net/2012/10/16/centos5-7%e3%81%abnginx%e3%81%ae%e6%9c%80%e6%96%b0%e7%89%88%e3%82%92yum%e3%81%a7%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab/comment-page-1/#comment-13913">CentOS5.7にNginxの最新版をyumでインストール</a> に <a href='http://www.enoie.net/blog/2014/07/%e9%96%8b%e7%99%ba%e7%92%b0%e5%a2%83%e3%81%ae%e3%82%bb%e3%83%83%e3%83%88%e3%82%a2%e3%83%83%e3%83%972/' rel='external nofollow' class='url'>開発環境のセットアップ(2) | S.F.Page</a> より</li><li class="recentcomments"><a href="http://perl.no-tubo.net/2012/05/03/mac%e3%81%ae%e3%83%86%e3%82%ad%e3%82%b9%e3%83%88%e3%82%a8%e3%83%87%e3%82%a3%e3%82%bf-sublime-text2%e3%81%a7javascript%e3%81%ae%e3%82%b7%e3%83%b3%e3%82%bf%e3%83%83%e3%82%af%e3%82%b9%e3%82%a8%e3%83%a9/comment-page-1/#comment-12822">macのテキストエディタ Sublime Text2でJavaScriptのシンタックスエラーチェックをリアルタイムで行う方法</a> に <a href='http://mrlittlebig.herokuapp.com/blog/049/' rel='external nofollow' class='url'>Sublime Text2を入れてみる</a> より</li><li class="recentcomments"><a href="http://perl.no-tubo.net/2012/03/04/postfix%e3%81%ae%e5%86%8d%e9%80%81%e8%a8%ad%e5%ae%9a/comment-page-1/#comment-4951">Postfixの再送設定はデフォルトだとちょっとお人よしですよ</a> に <a href='http://blog.tmkn.jp/postfix-retry/' rel='external nofollow' class='url'>Fish and Tips | Postfixの再送間隔</a> より</li><li class="recentcomments"><a href="http://perl.no-tubo.net/2014/04/13/gunma-web16%e3%81%a7%e8%a9%b1%e3%81%97%e3%81%be%e3%81%97%e3%81%9f/comment-page-1/#comment-3260">Gunma.web#16で話しました</a> に <a href='http://gunma-web.org/?p=826' rel='external nofollow' class='url'>Gunma.web 群馬でWebの勉強会 html,javascript</a> より</li><li class="recentcomments"><a href="http://perl.no-tubo.net/2010/03/08/postfix%e3%82%92yum%e3%81%a7%e3%82%a2%e3%83%83%e3%83%97%e3%83%87%e3%83%bc%e3%83%88%e3%81%97%e3%81%a6%e3%81%97%e3%81%be%e3%81%a3%e3%81%9f-orz/comment-page-1/#comment-3112">Postfixをyumでアップデートしてしまった orz&#8230;</a> に <a href='http://perl.no-tubo.net/2009/10/02/centos5-3-postfix%e3%82%92mysql%e5%af%be%e5%bf%9c%e3%81%ab%e3%81%99%e3%82%8b/' rel='external nofollow' class='url'>CentOS5.3 PostfixをMySQL対応にする | clicktx::Tech::Memo</a> より</li><li class="recentcomments"><a href="http://perl.no-tubo.net/2012/02/07/iphone%e3%83%91%e3%82%b1%e3%83%9b%e3%81%a7%e3%82%82%e3%82%89%e3%81%88%e3%82%8b%e3%82%bd%e3%83%95%e3%83%88%e3%83%90%e3%83%b3%e3%82%af%e3%81%aefon%e3%83%ab%e3%83%bc%e3%82%bf%e3%83%bc%e3%81%8c%e7%99%bb/comment-page-1/#comment-2945">iPhone+パケホでもらえるソフトバンクのFONルーターが登録できずにLinusになれないあなたへ「FONルーターの登録方法」</a> に 通りすがり より</li></ul></div></div><div id="categories-3" class="backgroundlist widget_categories"><div class="listtitle"><div class="tlbackgroundtitle"></div>
+      <div class="trbackgroundtitle"></div><h2>カテゴリー</h2>
+      <div class="blbackgroundtitle"></div>
+      <div class="brbackgroundtitle"></div>
+      </div><div class="contentbox">        <ul>
+    <li class="cat-item cat-item-180"><a href="http://perl.no-tubo.net/category/iphone/" title="iPhone に含まれる投稿をすべて表示">iPhone</a> (2)
+</li>
+    <li class="cat-item cat-item-24"><a href="http://perl.no-tubo.net/category/linux/" title="LINUX に含まれる投稿をすべて表示">LINUX</a> (26)
+<ul class='children'>
+    <li class="cat-item cat-item-25"><a href="http://perl.no-tubo.net/category/linux/centos4-x/" title="CentOS4.x に含まれる投稿をすべて表示">CentOS4.x</a> (5)
+</li>
+    <li class="cat-item cat-item-26"><a href="http://perl.no-tubo.net/category/linux/centos5-x/" title="CentOS5.x に含まれる投稿をすべて表示">CentOS5.x</a> (11)
+</li>
+    <li class="cat-item cat-item-233"><a href="http://perl.no-tubo.net/category/linux/centos6-x/" title="CentOS6.x に含まれる投稿をすべて表示">CentOS6.x</a> (4)
+</li>
+</ul>
+</li>
+    <li class="cat-item cat-item-22"><a href="http://perl.no-tubo.net/category/mac/" title="Mac に含まれる投稿をすべて表示">Mac</a> (27)
+</li>
+    <li class="cat-item cat-item-30"><a href="http://perl.no-tubo.net/category/paypal/" title="PayPal に含まれる投稿をすべて表示">PayPal</a> (8)
+</li>
+    <li class="cat-item cat-item-14"><a href="http://perl.no-tubo.net/category/web%e3%82%a2%e3%83%97%e3%83%aa/" title="webアプリ に含まれる投稿をすべて表示">webアプリ</a> (18)
+<ul class='children'>
+    <li class="cat-item cat-item-78"><a href="http://perl.no-tubo.net/category/web%e3%82%a2%e3%83%97%e3%83%aa/ec-cube/" title="EC-CUBE に含まれる投稿をすべて表示">EC-CUBE</a> (10)
+</li>
+    <li class="cat-item cat-item-15"><a href="http://perl.no-tubo.net/category/web%e3%82%a2%e3%83%97%e3%83%aa/openpne/" title="OpenPNE に含まれる投稿をすべて表示">OpenPNE</a> (4)
+</li>
+    <li class="cat-item cat-item-122"><a href="http://perl.no-tubo.net/category/web%e3%82%a2%e3%83%97%e3%83%aa/wordpress/" title="WordPress に含まれる投稿をすべて表示">WordPress</a> (2)
+</li>
+</ul>
+</li>
+    <li class="cat-item cat-item-163"><a href="http://perl.no-tubo.net/category/%c2%a0web/" title=" web に含まれる投稿をすべて表示"> web</a> (6)
+<ul class='children'>
+    <li class="cat-item cat-item-37"><a href="http://perl.no-tubo.net/category/%c2%a0web/css/" title="CSS に含まれる投稿をすべて表示">CSS</a> (4)
+</li>
+</ul>
+</li>
+    <li class="cat-item cat-item-4"><a href="http://perl.no-tubo.net/category/%e3%82%b5%e3%83%bc%e3%83%90%e7%ae%a1%e7%90%86/" title="サーバ管理 に含まれる投稿をすべて表示">サーバ管理</a> (64)
+<ul class='children'>
+    <li class="cat-item cat-item-17"><a href="http://perl.no-tubo.net/category/%e3%82%b5%e3%83%bc%e3%83%90%e7%ae%a1%e7%90%86/apache/" title="Apache に含まれる投稿をすべて表示">Apache</a> (11)
+</li>
+    <li class="cat-item cat-item-21"><a href="http://perl.no-tubo.net/category/%e3%82%b5%e3%83%bc%e3%83%90%e7%ae%a1%e7%90%86/gui%e3%83%84%e3%83%bc%e3%83%ab/" title="GUIツール に含まれる投稿をすべて表示">GUIツール</a> (12)
+    <ul class='children'>
+    <li class="cat-item cat-item-28"><a href="http://perl.no-tubo.net/category/%e3%82%b5%e3%83%bc%e3%83%90%e7%ae%a1%e7%90%86/gui%e3%83%84%e3%83%bc%e3%83%ab/phpmyadmin/" title="phpmyadmin に含まれる投稿をすべて表示">phpmyadmin</a> (5)
+</li>
+    <li class="cat-item cat-item-29"><a href="http://perl.no-tubo.net/category/%e3%82%b5%e3%83%bc%e3%83%90%e7%ae%a1%e7%90%86/gui%e3%83%84%e3%83%bc%e3%83%ab/postfixadmin/" title="postfixadmin に含まれる投稿をすべて表示">postfixadmin</a> (2)
+</li>
+    <li class="cat-item cat-item-6"><a href="http://perl.no-tubo.net/category/%e3%82%b5%e3%83%bc%e3%83%90%e7%ae%a1%e7%90%86/gui%e3%83%84%e3%83%bc%e3%83%ab/webmin/" title="webmin に含まれる投稿をすべて表示">webmin</a> (5)
+</li>
+    </ul>
+</li>
+    <li class="cat-item cat-item-66"><a href="http://perl.no-tubo.net/category/%e3%82%b5%e3%83%bc%e3%83%90%e7%ae%a1%e7%90%86/%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab%e3%83%a1%e3%83%a2/" title="インストールメモ に含まれる投稿をすべて表示">インストールメモ</a> (23)
+</li>
+    <li class="cat-item cat-item-140"><a href="http://perl.no-tubo.net/category/%e3%82%b5%e3%83%bc%e3%83%90%e7%ae%a1%e7%90%86/%e3%83%a1%e3%83%a2/" title="個人的なサーバ管理メモ。非公開。">メモ</a> (4)
+</li>
+    <li class="cat-item cat-item-7"><a href="http://perl.no-tubo.net/category/%e3%82%b5%e3%83%bc%e3%83%90%e7%ae%a1%e7%90%86/%e3%83%a1%e3%83%bc%e3%83%ab%e3%82%b5%e3%83%bc%e3%83%90/" title="メールサーバ に含まれる投稿をすべて表示">メールサーバ</a> (15)
+    <ul class='children'>
+    <li class="cat-item cat-item-27"><a href="http://perl.no-tubo.net/category/%e3%82%b5%e3%83%bc%e3%83%90%e7%ae%a1%e7%90%86/%e3%83%a1%e3%83%bc%e3%83%ab%e3%82%b5%e3%83%bc%e3%83%90/postfix/" title="postfix に含まれる投稿をすべて表示">postfix</a> (12)
+</li>
+    </ul>
+</li>
+</ul>
+</li>
+    <li class="cat-item cat-item-133"><a href="http://perl.no-tubo.net/category/%e3%83%87%e3%83%bc%e3%82%bf%e3%83%99%e3%83%bc%e3%82%b9/" title="データベース に含まれる投稿をすべて表示">データベース</a> (23)
+<ul class='children'>
+    <li class="cat-item cat-item-243"><a href="http://perl.no-tubo.net/category/%e3%83%87%e3%83%bc%e3%82%bf%e3%83%99%e3%83%bc%e3%82%b9/mongodb/" title="MongoDB に含まれる投稿をすべて表示">MongoDB</a> (1)
+</li>
+    <li class="cat-item cat-item-5"><a href="http://perl.no-tubo.net/category/%e3%83%87%e3%83%bc%e3%82%bf%e3%83%99%e3%83%bc%e3%82%b9/mysql/" title="MySQL に含まれる投稿をすべて表示">MySQL</a> (20)
+</li>
+    <li class="cat-item cat-item-58"><a href="http://perl.no-tubo.net/category/%e3%83%87%e3%83%bc%e3%82%bf%e3%83%99%e3%83%bc%e3%82%b9/postgresql/" title="PostgreSQL に含まれる投稿をすべて表示">PostgreSQL</a> (2)
+</li>
+</ul>
+</li>
+    <li class="cat-item cat-item-45"><a href="http://perl.no-tubo.net/category/%e3%83%8d%e3%83%83%e3%83%88%e3%83%af%e3%83%bc%e3%82%af/" title="ネットワーク に含まれる投稿をすべて表示">ネットワーク</a> (4)
+</li>
+    <li class="cat-item cat-item-101"><a href="http://perl.no-tubo.net/category/%e3%83%8f%e3%83%bc%e3%83%89%e3%82%a6%e3%82%a7%e3%82%a2/" title="ハードウェア に含まれる投稿をすべて表示">ハードウェア</a> (1)
+</li>
+    <li class="cat-item cat-item-9"><a href="http://perl.no-tubo.net/category/%e3%83%97%e3%83%ad%e3%82%b0%e3%83%a9%e3%83%9f%e3%83%b3%e3%82%b0/" title="プログラミング に含まれる投稿をすべて表示">プログラミング</a> (104)
+<ul class='children'>
+    <li class="cat-item cat-item-10"><a href="http://perl.no-tubo.net/category/%e3%83%97%e3%83%ad%e3%82%b0%e3%83%a9%e3%83%9f%e3%83%b3%e3%82%b0/javascript/" title="JavaScript に含まれる投稿をすべて表示">JavaScript</a> (8)
+</li>
+    <li class="cat-item cat-item-121"><a href="http://perl.no-tubo.net/category/%e3%83%97%e3%83%ad%e3%82%b0%e3%83%a9%e3%83%9f%e3%83%b3%e3%82%b0/jquery/" title="jQuery に含まれる投稿をすべて表示">jQuery</a> (2)
+</li>
+    <li class="cat-item cat-item-3"><a href="http://perl.no-tubo.net/category/%e3%83%97%e3%83%ad%e3%82%b0%e3%83%a9%e3%83%9f%e3%83%b3%e3%82%b0/perl/" title="perl に含まれる投稿をすべて表示">perl</a> (70)
+    <ul class='children'>
+    <li class="cat-item cat-item-155"><a href="http://perl.no-tubo.net/category/%e3%83%97%e3%83%ad%e3%82%b0%e3%83%a9%e3%83%9f%e3%83%b3%e3%82%b0/perl/mojolicious-perl-web%e3%83%97%e3%83%ad%e3%82%b0%e3%83%a9%e3%83%9f%e3%83%b3%e3%82%b0/" title="Mojolicious に含まれる投稿をすべて表示">Mojolicious</a> (10)
+</li>
+    <li class="cat-item cat-item-8"><a href="http://perl.no-tubo.net/category/%e3%83%97%e3%83%ad%e3%82%b0%e3%83%a9%e3%83%9f%e3%83%b3%e3%82%b0/perl/perl%e3%83%a2%e3%82%b8%e3%83%a5%e3%83%bc%e3%83%ab/" title="perlモジュール に含まれる投稿をすべて表示">perlモジュール</a> (32)
+</li>
+    <li class="cat-item cat-item-16"><a href="http://perl.no-tubo.net/category/%e3%83%97%e3%83%ad%e3%82%b0%e3%83%a9%e3%83%9f%e3%83%b3%e3%82%b0/perl/%e3%83%95%e3%82%a1%e3%82%a4%e3%83%ab%e6%93%8d%e4%bd%9c/" title="ファイル操作 に含まれる投稿をすべて表示">ファイル操作</a> (2)
+</li>
+    </ul>
+</li>
+    <li class="cat-item cat-item-61"><a href="http://perl.no-tubo.net/category/%e3%83%97%e3%83%ad%e3%82%b0%e3%83%a9%e3%83%9f%e3%83%b3%e3%82%b0/php/" title="PHP に含まれる投稿をすべて表示">PHP</a> (6)
+</li>
+    <li class="cat-item cat-item-13"><a href="http://perl.no-tubo.net/category/%e3%83%97%e3%83%ad%e3%82%b0%e3%83%a9%e3%83%9f%e3%83%b3%e3%82%b0/%e6%ad%a3%e8%a6%8f%e8%a1%a8%e7%8f%be/" title="正規表現 に含まれる投稿をすべて表示">正規表現</a> (1)
+</li>
+    <li class="cat-item cat-item-165"><a href="http://perl.no-tubo.net/category/%e3%83%97%e3%83%ad%e3%82%b0%e3%83%a9%e3%83%9f%e3%83%b3%e3%82%b0/%e9%96%8b%e7%99%ba%e7%92%b0%e5%a2%83-web%e3%83%97%e3%83%ad%e3%82%b0%e3%83%a9%e3%83%9f%e3%83%b3%e3%82%b0/" title="開発環境 に含まれる投稿をすべて表示">開発環境</a> (11)
+</li>
+</ul>
+</li>
+    <li class="cat-item cat-item-84"><a href="http://perl.no-tubo.net/category/%e4%bb%ae%e6%83%b3%e5%8c%96/" title="仮想化 に含まれる投稿をすべて表示">仮想化</a> (1)
+</li>
+    <li class="cat-item cat-item-188"><a href="http://perl.no-tubo.net/category/%e5%8b%89%e5%bc%b7%e4%bc%9a/" title="勉強会 に含まれる投稿をすべて表示">勉強会</a> (22)
+</li>
+    <li class="cat-item cat-item-196"><a href="http://perl.no-tubo.net/category/%e6%8f%90%e4%be%9b%e3%82%b5%e3%83%bc%e3%83%93%e3%82%b9/" title="提供サービス に含まれる投稿をすべて表示">提供サービス</a> (1)
+</li>
+    <li class="cat-item cat-item-44"><a href="http://perl.no-tubo.net/category/%e9%9b%91%e8%a8%98/" title="雑記 に含まれる投稿をすべて表示">雑記</a> (4)
+</li>
+        </ul>
+</div></div><div id="text-2" class="backgroundlist widget_text"><div class="listtitle"><div class="tlbackgroundtitle"></div>
+      <div class="trbackgroundtitle"></div><h2>Author</h2>
+      <div class="blbackgroundtitle"></div>
+      <div class="brbackgroundtitle"></div>
+      </div><div class="contentbox">            <div class="textwidget"><a href="https://plus.google.com/114424515609830665847?rel=author">clicktx google+</a></div>
+        </div></div><div id="text-5" class="backgroundlist widget_text"><div class="listtitle"><div class="tlbackgroundtitle"></div>
+      <div class="trbackgroundtitle"></div><h2>メールフォーム</h2>
+      <div class="blbackgroundtitle"></div>
+      <div class="brbackgroundtitle"></div>
+      </div><div class="contentbox">            <div class="textwidget"><!-- ここから -->
+<script>
+    var ClicktxBlogMail={};
+    ClicktxBlogMail.UID='963c975dbaf2389c3b934c1f43bba1';
+    
+    (function(){var p=(("https:"==document.location.protocol)?"https://":"http://");
+    document.write('<scri'+'pt src="'+p+'tools.clicktx.jp/blogmail/js/blogMail.js" charset="UTF-8"></scri'+'pt>');})();
+</script>
+<!-- ここまで -->
+<style><!--
+#ClicktxBlogMail {
+    font-size:11px;
+    padding:7px;
+}
+#ClicktxBlogMail div {
+    padding-bottom:14px;
+}
+#ClicktxBlogMail input, #ClicktxBlogMail textarea{
+    font-size:11px;
+    width:220px;
+}
+#ClicktxBlogMail textarea{width:250px;}
+#ClicktxBlogMail input.button{
+    width:auto;
+}
+--></style>
+</div>
+        </div></div><div id="linkcat-2" class="backgroundlist widget_links"><div class="listtitle"><div class="tlbackgroundtitle"></div>
+      <div class="trbackgroundtitle"></div><h2>ブログロール</h2>
+      <div class="blbackgroundtitle"></div>
+      <div class="brbackgroundtitle"></div>
+      </div><div class="contentbox">
+    <ul class='xoxo blogroll'>
+<li><a href="http://blog.livedoor.jp/dankogai/" title="小飼 弾さんのブログ">404 Blog Not Found</a></li>
+<li><a href="http://www.drk7.jp/MT/">Drk7jp</a></li>
+<li><a href="http://d.hatena.ne.jp/tokuhirom/">TokuLog 改メ tokuhirom’s blog</a></li>
+<li><a href="http://d.hatena.ne.jp/download_takeshi/">ダウンロードたけし（寅年）の日記</a></li>
+
+    </ul>
+</div></div>
+<div id="archives-2" class="backgroundlist widget_archive"><div class="listtitle"><div class="tlbackgroundtitle"></div>
+      <div class="trbackgroundtitle"></div><h2>アーカイブ</h2>
+      <div class="blbackgroundtitle"></div>
+      <div class="brbackgroundtitle"></div>
+      </div><div class="contentbox">        <ul>
+    <li><a href='http://perl.no-tubo.net/2014/09/'>2014年9月</a>&nbsp;(1)</li>
+    <li><a href='http://perl.no-tubo.net/2014/08/'>2014年8月</a>&nbsp;(2)</li>
+    <li><a href='http://perl.no-tubo.net/2014/07/'>2014年7月</a>&nbsp;(1)</li>
+    <li><a href='http://perl.no-tubo.net/2014/06/'>2014年6月</a>&nbsp;(2)</li>
+    <li><a href='http://perl.no-tubo.net/2014/04/'>2014年4月</a>&nbsp;(2)</li>
+    <li><a href='http://perl.no-tubo.net/2014/03/'>2014年3月</a>&nbsp;(2)</li>
+    <li><a href='http://perl.no-tubo.net/2014/02/'>2014年2月</a>&nbsp;(1)</li>
+    <li><a href='http://perl.no-tubo.net/2014/01/'>2014年1月</a>&nbsp;(1)</li>
+    <li><a href='http://perl.no-tubo.net/2013/11/'>2013年11月</a>&nbsp;(4)</li>
+    <li><a href='http://perl.no-tubo.net/2013/10/'>2013年10月</a>&nbsp;(1)</li>
+    <li><a href='http://perl.no-tubo.net/2013/09/'>2013年9月</a>&nbsp;(5)</li>
+    <li><a href='http://perl.no-tubo.net/2013/06/'>2013年6月</a>&nbsp;(2)</li>
+    <li><a href='http://perl.no-tubo.net/2013/05/'>2013年5月</a>&nbsp;(10)</li>
+    <li><a href='http://perl.no-tubo.net/2013/04/'>2013年4月</a>&nbsp;(3)</li>
+    <li><a href='http://perl.no-tubo.net/2013/03/'>2013年3月</a>&nbsp;(8)</li>
+    <li><a href='http://perl.no-tubo.net/2013/02/'>2013年2月</a>&nbsp;(6)</li>
+    <li><a href='http://perl.no-tubo.net/2012/12/'>2012年12月</a>&nbsp;(3)</li>
+    <li><a href='http://perl.no-tubo.net/2012/11/'>2012年11月</a>&nbsp;(1)</li>
+    <li><a href='http://perl.no-tubo.net/2012/10/'>2012年10月</a>&nbsp;(1)</li>
+    <li><a href='http://perl.no-tubo.net/2012/09/'>2012年9月</a>&nbsp;(4)</li>
+    <li><a href='http://perl.no-tubo.net/2012/08/'>2012年8月</a>&nbsp;(2)</li>
+    <li><a href='http://perl.no-tubo.net/2012/07/'>2012年7月</a>&nbsp;(1)</li>
+    <li><a href='http://perl.no-tubo.net/2012/05/'>2012年5月</a>&nbsp;(6)</li>
+    <li><a href='http://perl.no-tubo.net/2012/04/'>2012年4月</a>&nbsp;(3)</li>
+    <li><a href='http://perl.no-tubo.net/2012/03/'>2012年3月</a>&nbsp;(4)</li>
+    <li><a href='http://perl.no-tubo.net/2012/02/'>2012年2月</a>&nbsp;(1)</li>
+    <li><a href='http://perl.no-tubo.net/2012/01/'>2012年1月</a>&nbsp;(2)</li>
+    <li><a href='http://perl.no-tubo.net/2011/12/'>2011年12月</a>&nbsp;(4)</li>
+    <li><a href='http://perl.no-tubo.net/2011/11/'>2011年11月</a>&nbsp;(2)</li>
+    <li><a href='http://perl.no-tubo.net/2011/10/'>2011年10月</a>&nbsp;(3)</li>
+    <li><a href='http://perl.no-tubo.net/2011/09/'>2011年9月</a>&nbsp;(2)</li>
+    <li><a href='http://perl.no-tubo.net/2011/08/'>2011年8月</a>&nbsp;(1)</li>
+    <li><a href='http://perl.no-tubo.net/2011/07/'>2011年7月</a>&nbsp;(3)</li>
+    <li><a href='http://perl.no-tubo.net/2011/06/'>2011年6月</a>&nbsp;(4)</li>
+    <li><a href='http://perl.no-tubo.net/2011/04/'>2011年4月</a>&nbsp;(3)</li>
+    <li><a href='http://perl.no-tubo.net/2011/03/'>2011年3月</a>&nbsp;(6)</li>
+    <li><a href='http://perl.no-tubo.net/2011/02/'>2011年2月</a>&nbsp;(5)</li>
+    <li><a href='http://perl.no-tubo.net/2011/01/'>2011年1月</a>&nbsp;(9)</li>
+    <li><a href='http://perl.no-tubo.net/2010/12/'>2010年12月</a>&nbsp;(6)</li>
+    <li><a href='http://perl.no-tubo.net/2010/11/'>2010年11月</a>&nbsp;(4)</li>
+    <li><a href='http://perl.no-tubo.net/2010/10/'>2010年10月</a>&nbsp;(1)</li>
+    <li><a href='http://perl.no-tubo.net/2010/09/'>2010年9月</a>&nbsp;(3)</li>
+    <li><a href='http://perl.no-tubo.net/2010/08/'>2010年8月</a>&nbsp;(3)</li>
+    <li><a href='http://perl.no-tubo.net/2010/07/'>2010年7月</a>&nbsp;(5)</li>
+    <li><a href='http://perl.no-tubo.net/2010/06/'>2010年6月</a>&nbsp;(7)</li>
+    <li><a href='http://perl.no-tubo.net/2010/05/'>2010年5月</a>&nbsp;(3)</li>
+    <li><a href='http://perl.no-tubo.net/2010/04/'>2010年4月</a>&nbsp;(3)</li>
+    <li><a href='http://perl.no-tubo.net/2010/03/'>2010年3月</a>&nbsp;(6)</li>
+    <li><a href='http://perl.no-tubo.net/2010/02/'>2010年2月</a>&nbsp;(2)</li>
+    <li><a href='http://perl.no-tubo.net/2010/01/'>2010年1月</a>&nbsp;(4)</li>
+    <li><a href='http://perl.no-tubo.net/2009/12/'>2009年12月</a>&nbsp;(2)</li>
+    <li><a href='http://perl.no-tubo.net/2009/11/'>2009年11月</a>&nbsp;(2)</li>
+    <li><a href='http://perl.no-tubo.net/2009/10/'>2009年10月</a>&nbsp;(5)</li>
+    <li><a href='http://perl.no-tubo.net/2009/09/'>2009年9月</a>&nbsp;(6)</li>
+    <li><a href='http://perl.no-tubo.net/2009/08/'>2009年8月</a>&nbsp;(2)</li>
+    <li><a href='http://perl.no-tubo.net/2009/07/'>2009年7月</a>&nbsp;(3)</li>
+    <li><a href='http://perl.no-tubo.net/2009/05/'>2009年5月</a>&nbsp;(1)</li>
+    <li><a href='http://perl.no-tubo.net/2009/04/'>2009年4月</a>&nbsp;(2)</li>
+    <li><a href='http://perl.no-tubo.net/2009/03/'>2009年3月</a>&nbsp;(1)</li>
+    <li><a href='http://perl.no-tubo.net/2009/02/'>2009年2月</a>&nbsp;(6)</li>
+    <li><a href='http://perl.no-tubo.net/2009/01/'>2009年1月</a>&nbsp;(1)</li>
+    <li><a href='http://perl.no-tubo.net/2008/10/'>2008年10月</a>&nbsp;(3)</li>
+    <li><a href='http://perl.no-tubo.net/2008/09/'>2008年9月</a>&nbsp;(1)</li>
+    <li><a href='http://perl.no-tubo.net/2008/07/'>2008年7月</a>&nbsp;(2)</li>
+    <li><a href='http://perl.no-tubo.net/2008/06/'>2008年6月</a>&nbsp;(2)</li>
+    <li><a href='http://perl.no-tubo.net/2008/02/'>2008年2月</a>&nbsp;(1)</li>
+    <li><a href='http://perl.no-tubo.net/2008/01/'>2008年1月</a>&nbsp;(2)</li>
+    <li><a href='http://perl.no-tubo.net/2007/10/'>2007年10月</a>&nbsp;(3)</li>
+    <li><a href='http://perl.no-tubo.net/2007/06/'>2007年6月</a>&nbsp;(1)</li>
+    <li><a href='http://perl.no-tubo.net/2006/11/'>2006年11月</a>&nbsp;(4)</li>
+    <li><a href='http://perl.no-tubo.net/2006/10/'>2006年10月</a>&nbsp;(2)</li>
+        </ul>
+</div></div>  <!-- end Widget -->
+</div> 
+<!-- closing sidebard div -->
+<div id="shadowfooter">
+</div>
+<div id="footer"> 
+  <!-- begin footer div -->
+    <!-- begin widget footer -->
+<div id="meta-4" class="backgroundlist widget_meta"><div class="listtitle"><div class="tlbackgroundtitle"></div>
+      <div class="trbackgroundtitle"></div><h2>メタ情報</h2>
+      <div class="blbackgroundtitle"></div>
+      <div class="brbackgroundtitle"></div>
+      </div><div class="contentbox">            <ul>
+                        <li><a href="http://perl.no-tubo.net/wp-login.php">ログイン</a></li>
+            <li><a href="http://perl.no-tubo.net/feed/" title="このサイトを RSS2.0 で購読">投稿の <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+            <li><a href="http://perl.no-tubo.net/comments/feed/" title="すべての投稿への最新コメントを RSS で購読">コメントの <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+<li><a href="https://ja.wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>            </ul>
+</div></div><div id="linkcat-175" class="backgroundlist widget_links"><div class="listtitle"><div class="tlbackgroundtitle"></div>
+      <div class="trbackgroundtitle"></div><h2>スペシャル</h2>
+      <div class="blbackgroundtitle"></div>
+      <div class="brbackgroundtitle"></div>
+      </div><div class="contentbox">
+    <ul class='xoxo blogroll'>
+<li><a href="http://haganeya.jp/">鋼材・鋼板</a></li>
+
+    </ul>
+</div></div>
+  <!-- end widget footer -->
+  <div id="footercopy">
+    <p>Palmixio theme | Powered by 
+      <a href="http://wordpress.org/">WordPress</a><br />
+      <a href="http://perl.no-tubo.net/feed/">
+        Entries (RSS)</a>, 
+      <a href="http://perl.no-tubo.net/comments/feed/">
+        コメント (RSS)</a>
+      <!-- 80 queries. 0.698 seconds. -->
+        </p>
+  </div>
+</div> 
+<!-- end footer div -->
+</div> 
+<!-- end container div -->
+
+
+</body>
+</html>  
