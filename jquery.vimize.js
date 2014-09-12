@@ -1,5 +1,3 @@
-// firefox(mac) 非対応 keypressで0が返る
-
 (function($){
   $.fn.vimize = function(options){
     var defaults = {
@@ -11,7 +9,17 @@
       defaultSelectors: 0
     };
     var setting = $.extend(defaults,options);
+
     var keyPressBuffer = '';
+    var intActiveCol = setting.defaultSelectors;
+    var arrActiveElement = {};
+    var $objElements = {};
+    var maxCols = 0;
+    for (var i in setting.selectors){
+      arrActiveElement[i] = -1;
+      $objElements[i] = $(setting.selectors[i]);
+      ++maxCols;
+    }
     console.log(setting);
 
 
@@ -32,19 +40,9 @@
       $((navigator.userAgent.indexOf("Opera") != -1) ? document.compatMode == 'BackCompat' ? 'body' : 'html' :'html,body').animate({scrollTop: '-='+setting.scrollVal}, 'fast');
       return false;
     };
-    // jkhl
-    // j,k対象
-    // var $objElements = $(".posttitle a, .navigationpost a");
-    var $objElements = $(setting.selectors[0]);
+    var fnActiveElement = function(n){ $($objElements[intActiveCol][n]).focus(); };
 
-    console.log($objElements);
-    // var $objElements = $("#product-list-wrap div a, #detailarea a, #detailarea select");
-    // if ($objElements.length == 0){
-    //     $objElements = $("#category_area a:visible");
-    // }
-    var activeElementNo = -1;
-    var fnActiveElement = function(n){ console.log('acticve'+n);$($objElements[n]).focus(); };
-
+    // hjkl
     $(window).keydown(function(e){
       if (e.keyCode == 27) { $(':focus').blur(); keyPressBuffer =''; } // esc key
       var $focused = $("input:focus");
@@ -78,13 +76,13 @@
             fnPageBottom();
             break;
           case 72: // H
-            fnActiveElement(activeElementNo=0);
+            fnActiveElement(arrActiveElement[intActiveCol]=0);
             break;
           case 76: // L
-            fnActiveElement(activeElementNo=($objElements.length -1));
+            fnActiveElement(arrActiveElement[intActiveCol]=($objElements[intActiveCol].length -1));
             break;
           case 52: // $ (shift+4)
-            fnActiveElement(activeElementNo=($objElements.length -1));
+            fnActiveElement(arrActiveElement[intActiveCol]=($objElements[intActiveCol].length -1));
             break;
           default:
             break;
@@ -108,19 +106,25 @@
             if (keyPressBuffer == 71){ keyPressBuffer =''; fnPageTop(); return false; }
             break;
           case 74: // j
-            if (($objElements.length -1) > activeElementNo){ fnActiveElement(++activeElementNo); }
-              console.log(activeElementNo);
+            if (($objElements[intActiveCol].length -1) > arrActiveElement[intActiveCol]){
+              fnActiveElement(++arrActiveElement[intActiveCol]);
+            }
             break;
           case 75: // k
-            if (activeElementNo > 0){ fnActiveElement(--activeElementNo); }
-              console.log(activeElementNo);
+            if (arrActiveElement[intActiveCol] > 0){
+              fnActiveElement(--arrActiveElement[intActiveCol]);
+            }
             break;
-          // case 72: // h
-          //   history.back();
-          //   break;
-          // case 76: // l
-          //   history.forward();
-          //   break;
+          case 72: // h
+            if (intActiveCol > 0){--intActiveCol;}
+            if (arrActiveElement[intActiveCol] < 0){ arrActiveElement[intActiveCol] = 0; }
+            fnActiveElement(arrActiveElement[intActiveCol]);
+            break;
+          case 76: // l
+            if (intActiveCol < maxCols -1){++intActiveCol;}
+            if (arrActiveElement[intActiveCol] < 0){ arrActiveElement[intActiveCol] = 0; }
+            fnActiveElement(arrActiveElement[intActiveCol]);
+            break;
           case 66: // b pagerに対応する？
             history.back();
             break;
@@ -130,7 +134,7 @@
           case 48: // 0
           case 96: // 0(テンキー)
           case 222: // ^
-            fnActiveElement(activeElementNo=0);
+            fnActiveElement(arrActiveElement[intActiveCol]=0);
             break;
           default:
             break;
