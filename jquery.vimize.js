@@ -62,6 +62,7 @@
           default:
             break;
         }
+        keyPressBuffer ='';
       }
       if ($focused.length) return;
 
@@ -70,8 +71,8 @@
         switch (e.keyCode){
           case 191: // ? (shift+/)
             $(setting.searchBoxSelector).focus();
-            return false;
-            // break;
+            // return false;
+            break;
           case 71: // G
             fnPageBottom();
             break;
@@ -87,6 +88,7 @@
           default:
             break;
         }
+        return false;
       } else if(e.keyCode == 71){ // g commands
           if(keyPressBuffer != 71){ keyPressBuffer = 71; return; }
           switch(e.keyCode){
@@ -109,8 +111,8 @@
             break;
           case 191: // '/'
             $(setting.searchBoxSelector).focus();
-            return false;
-            // break;
+            // return false;
+            break;
           case 74: // j
             if (($objElements[intActiveCol].length -1) > arrActiveElement[intActiveCol]){
               fnActiveElement(++arrActiveElement[intActiveCol]);
@@ -146,6 +148,7 @@
             break;
         }
         keyPressBuffer = e.keyCode;
+        return false;
       }
     });
 
