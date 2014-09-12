@@ -68,7 +68,7 @@
 <link rel="stylesheet" href="http://store.storeimages.cdn-apple.com/7675/store.apple.com/rs-web/rel/department-stack-ie8.css" media="screen, print" />
 <![endif]-->
 <link rel="stylesheet" href="http://store.storeimages.cdn-apple.com/7675/store.apple.com/Catalog/global/css/web/marketing/marketing.css" media="screen, print" />
-<style media="">null</style>
+
 <script>
     window.irOn=true;
   </script>
@@ -238,7 +238,7 @@ class="item {{#selected}}selected{{/selected}}" id="{{id}}"
                 'categoryHeading': 'カテゴリ'
             },
             suggestionsUrl: '/jp/searchresults/autocomplete',
-            suggestionsEnabled: true
+            suggestionsEnabled: false
         };
         jQuery('#gh-tab-search').addClass('enhance');
         var siteSearch = new apple.SiteSearchLiquid($('site-search'), null, {options: options});

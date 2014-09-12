@@ -1,15 +1,25 @@
-// firefox(mac) 非対応 keypressで0が返る
-
 (function($){
   $.fn.vimize = function(options){
     var defaults = {
       escKey: 'true',
       searchBoxSelector: '',
       homePagePath: '/',
-      scrollVal: $(window).height() *0.8
+      scrollVal: $(window).height() *0.3,
+      selectors: {0: 'a'},
+      defaultSelectors: 0
     };
     var setting = $.extend(defaults,options);
+
     var keyPressBuffer = '';
+    var intActiveCol = setting.defaultSelectors;
+    var arrActiveElement = {};
+    var $objElements = {};
+    var maxCols = 0;
+    for (var i in setting.selectors){
+      arrActiveElement[i] = -1;
+      $objElements[i] = $(setting.selectors[i]);
+      ++maxCols;
+    }
     console.log(setting);
 
 
@@ -30,18 +40,14 @@
       $((navigator.userAgent.indexOf("Opera") != -1) ? document.compatMode == 'BackCompat' ? 'body' : 'html' :'html,body').animate({scrollTop: '-='+setting.scrollVal}, 'fast');
       return false;
     };
-    // jkhl
-    // j,k対象
-    var elementsArray = $("a");
-    console.log(elementsArray.length);
-    // var elementsArray = $("#product-list-wrap div a, #detailarea a, #detailarea select");
-    // if (elementsArray.length == 0){
-    //     elementsArray = $("#category_area a:visible");
-    // }
-    var activeElementNo = -1;
-    var activeFunction = function(n){ $(elementsArray[n]).focus(); };
+    var fnActiveElement = function(n){ $($objElements[intActiveCol][n]).focus(); };
+
+    // hjkl
     $(window).keydown(function(e){
-      // ctrl
+      if (e.keyCode == 27) { $(':focus').blur(); keyPressBuffer =''; } // esc key
+      var $focused = $("input:focus");
+
+      // ctrl key
       if (e.ctrlKey){
         switch (e.keyCode){
           case 68: // ctrl+d
@@ -50,92 +56,94 @@
           case 85: // ctrl+u
             fnScrollUp();
             break;
-        }
-      } else if (e.shiftKey){
-        // code
-      } else {
-        // if (e.keyCode == 27) { $(':focus').blur(); keyPressBuffer =''; } // esc key
-        // if ( $("input:focus").length ){ return; }
-        switch (e.keyCode){
-          case 27: // esc
-            $(':focus').blur();
-            keyPressBuffer ='';
+          case 87: // ctrl+w
+            if ($focused.length) { $focused.val(''); }
             break;
           default:
             break;
         }
       }
-    });
-    $(window).keypress(function(e){
-      if ( $("input:focus").length ){ return; }
-      switch (e.keyCode){
-        case 100: // d
-          scrollBy(0,setting.scrollVal);
-          break;
-        case 117: // u
-          scrollBy(0,'-'+setting.scrollVal);
-          break;
+      if ($focused.length) return;
 
-        case 106: // j
-          if ((elementsArray.length -1) > activeElementNo){ activeFunction(++activeElementNo); }
-            console.log(activeElementNo);
-          break;
-        case 107: // k
-          if (activeElementNo > 0){ activeFunction(--activeElementNo); }
-            console.log(activeElementNo);
-          break;
-        case 104: // h
-          history.back();
-          break;
-        case 108: // l
-          history.forward();
-          break;
-        case 72: // H
-        case 48: // 0
-        case 94: // ^
-          activeFunction(activeElementNo=0);
-          break;
-        case 76: // L
-        case 36: // $
-          activeFunction(activeElementNo=(elementsArray.length -1));
-          break;
-        case 47: // '/'
-        case 63: // ?
-          $(setting.searchBoxSelector).focus();
-          return false;
-          // break;
-        case 103: // g
-          if (keyPressBuffer == 'g'){
-            keyPressBuffer =''; fnPageTop();
-          } else{
-            keyPressBuffer = 'g';
-          }
-          break;
-        case 71: // G
-          fnPageBottom();
-          break;
-        case 45: // -
-          window.location.href = setting.homePagePath;
-          break;
-        default:
-          break;
+      // shift key
+      if (e.shiftKey){
+        switch (e.keyCode){
+          case 191: // ? (shift+/)
+            $(setting.searchBoxSelector).focus();
+            return false;
+            // break;
+          case 71: // G
+            fnPageBottom();
+            break;
+          case 72: // H
+            fnActiveElement(arrActiveElement[intActiveCol]=0);
+            break;
+          case 76: // L
+            fnActiveElement(arrActiveElement[intActiveCol]=($objElements[intActiveCol].length -1));
+            break;
+          case 52: // $ (shift+4)
+            fnActiveElement(arrActiveElement[intActiveCol]=($objElements[intActiveCol].length -1));
+            break;
+          default:
+            break;
+        }
+      } else {
+        switch (e.keyCode){
+          case 189: // -
+            window.location.href = setting.homePagePath;
+            break;
+          case 68: // d
+            scrollBy(0,setting.scrollVal);
+            break;
+          case 85: // u
+            scrollBy(0,'-'+setting.scrollVal);
+            break;
+          case 191: // '/'
+            $(setting.searchBoxSelector).focus();
+            return false;
+            // break;
+          case 71: // g
+            if (keyPressBuffer == 71){ keyPressBuffer =''; fnPageTop(); return false; }
+            break;
+          case 74: // j
+            if (($objElements[intActiveCol].length -1) > arrActiveElement[intActiveCol]){
+              fnActiveElement(++arrActiveElement[intActiveCol]);
+            }
+            break;
+          case 75: // k
+            if (arrActiveElement[intActiveCol] > 0){
+              fnActiveElement(--arrActiveElement[intActiveCol]);
+            }
+            break;
+          case 72: // h
+            if (intActiveCol > 0){--intActiveCol;}
+            if (arrActiveElement[intActiveCol] < 0){ arrActiveElement[intActiveCol] = 0; }
+            fnActiveElement(arrActiveElement[intActiveCol]);
+            break;
+          case 76: // l
+            if (intActiveCol < maxCols -1){++intActiveCol;}
+            if (arrActiveElement[intActiveCol] < 0){ arrActiveElement[intActiveCol] = 0; }
+            fnActiveElement(arrActiveElement[intActiveCol]);
+            break;
+          case 66: // b pagerに対応する？
+            history.back();
+            break;
+          case 78: // n << f にするべき？
+            history.forward();
+            break;
+          case 48: // 0
+          case 96: // 0(テンキー)
+          case 222: // ^
+            fnActiveElement(arrActiveElement[intActiveCol]=0);
+            break;
+          default:
+            break;
+        }
       }
-      if (e.keyCode != 103 ){keyPressBuffer ='';}
+      keyPressBuffer = e.keyCode;
     });
-
 
 
 
   }; //
 })(jQuery);
-
-
-// 100: // d
-// 117: // u
-// 74: // J(Shift+j)
-// 75: // K(Shift+k)
-// 32: // Space key
-// 17: // Ctrl key??
-
-
-
