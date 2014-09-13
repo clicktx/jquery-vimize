@@ -10,7 +10,7 @@
     };
     var setting = $.extend(defaults,options);
 
-    var keyPressBuffer = '';
+    var arrKeyPressBuffer = [];
     var intActiveCol = setting.defaultSelectors;
     var arrActiveElement = {};
     var $objElements = {};
@@ -45,7 +45,7 @@
       var $focused = $("input:focus");
 
       // esc key
-      if (e.keyCode == 27) { $(':focus').blur(); keyPressBuffer =''; }
+      if (e.keyCode == 27) { $(':focus').blur(); arrKeyPressBuffer = []; }
       // ctrl key
       if (e.ctrlKey){
         switch (e.keyCode){
@@ -61,7 +61,7 @@
           default:
             break;
         }
-        keyPressBuffer ='';
+        arrKeyPressBuffer = [];
       }
       if ($focused.length) return;
 
@@ -89,7 +89,7 @@
         }
         return false;
       } else if(e.keyCode == 71){ // g commands
-          if(keyPressBuffer != 71){ keyPressBuffer = 71; return; }
+          if(arrKeyPressBuffer[arrKeyPressBuffer.length-1] != 71){ arrKeyPressBuffer.push(71); return; }
           switch(e.keyCode){
             case 71: // gg
               fnPageTop();
@@ -101,7 +101,7 @@
             // window.location.href = $(setting.prevPage).attr('href');
             //   break;
           }
-          keyPressBuffer ='';
+          arrKeyPressBuffer = [];
           return false;
       } else {
         switch (e.keyCode){
@@ -152,7 +152,7 @@
           default:
             break;
         }
-        keyPressBuffer = '';
+        arrKeyPressBuffer.push(e.keyCode);
         return false;
       }
     });
