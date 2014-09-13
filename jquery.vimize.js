@@ -58,8 +58,6 @@
           case 87: // ctrl+w
             if ($focused.length) { $focused.val(''); }
             break;
-          default:
-            break;
         }
         arrKeyPressBuffer = [];
       }
@@ -83,8 +81,6 @@
             break;
           case 52: // $ (shift+4)
             fnActiveElement(arrActiveElement[intActiveCol]=($objElements[intActiveCol].length -1));
-            break;
-          default:
             break;
         }
         return false;
@@ -114,10 +110,6 @@
           case 85: // u
             scrollBy(0,'-'+setting.scrollVal);
             break;
-          case 191: // '/'
-            $(setting.searchBoxSelector).focus();
-            return false;
-            // break;
           case 74: // j
             if (($objElements[intActiveCol].length -1) > arrActiveElement[intActiveCol]){
               fnActiveElement(++arrActiveElement[intActiveCol]);
@@ -149,8 +141,9 @@
           case 222: // ^
             fnActiveElement(arrActiveElement[intActiveCol]=0);
             break;
-          default:
-            break;
+          case 191: // '/'
+            $(setting.searchBoxSelector).focus();
+            return false;
         }
         arrKeyPressBuffer.push(e.keyCode);
         // return false; // ⌘+` 等が使えなくなる
