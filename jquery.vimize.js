@@ -66,10 +66,6 @@
       // shift key
       if (e.shiftKey){
         switch (e.keyCode){
-          case 191: // ? (shift+/)
-            $(setting.searchBoxSelector).focus();
-            // return false;
-            break;
           case 71: // G
             fnPageBottom();
             break;
@@ -82,8 +78,10 @@
           case 52: // $ (shift+4)
             fnActiveElement(arrActiveElement[intActiveCol]=($objElements[intActiveCol].length -1));
             break;
+          case 191: // ? (shift+/)
+            $(setting.searchBoxSelector).focus();
+            return false;
         }
-        return false;
       } else if(e.keyCode == 71){ // g commands
           if(arrKeyPressBuffer[arrKeyPressBuffer.length-1] != 71){ arrKeyPressBuffer.push(71); return; }
           switch(e.keyCode){
