@@ -42,9 +42,10 @@
 
     // hjkl
     $(window).keydown(function(e){
-      if (e.keyCode == 27) { $(':focus').blur(); keyPressBuffer =''; } // esc key
       var $focused = $("input:focus");
 
+      // esc key
+      if (e.keyCode == 27) { $(':focus').blur(); keyPressBuffer =''; }
       // ctrl key
       if (e.ctrlKey){
         switch (e.keyCode){
