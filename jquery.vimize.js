@@ -116,8 +116,8 @@
             break;
           case 191: // '/'
             $(setting.searchBoxSelector).focus();
-            // return false;
-            break;
+            return false;
+            // break;
           case 74: // j
             if (($objElements[intActiveCol].length -1) > arrActiveElement[intActiveCol]){
               fnActiveElement(++arrActiveElement[intActiveCol]);
@@ -153,7 +153,7 @@
             break;
         }
         arrKeyPressBuffer.push(e.keyCode);
-        return false;
+        // return false; // ⌘+` 等が使えなくなる
       }
     });
 
