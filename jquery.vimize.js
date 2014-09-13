@@ -66,6 +66,9 @@
       // shift key
       if (e.shiftKey){
         switch (e.keyCode){
+          case 186: // :
+            if(arrKeyPressBuffer[arrKeyPressBuffer.length-1] != ':'){ arrKeyPressBuffer.push(':'); return; }
+            break;
           case 71: // G
             fnPageBottom();
             break;
