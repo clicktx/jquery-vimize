@@ -6,10 +6,15 @@
       homePagePath: '/',
       scrollVal: $(window).height() *0.3,
       selectors: {0: 'a'},
-      defaultSelectors: 0
+      defaultSelectors: 0,
+      command: {
+        CAT: function(){window.location.href = 'https://www.google.co.jp/search?q=%E7%8C%AB&tbm=isch';}
+      }
     };
     var setting = $.extend(defaults,options);
 
+    var mode = '';
+    var command = '';
     var arrKeyPressBuffer = [];
     var intActiveCol = setting.defaultSelectors;
     var arrActiveElement = {};
@@ -45,7 +50,12 @@
       var $focused = $("input:focus");
 
       // esc key
-      if (e.keyCode == 27) { $(':focus').blur(); arrKeyPressBuffer = []; }
+      if (e.keyCode == 27) {
+        $(':focus').blur();
+        arrKeyPressBuffer = [];
+        mode = '';
+        command = '';
+      }
       // ctrl key
       if (e.ctrlKey){
         switch (e.keyCode){
@@ -66,8 +76,10 @@
       // shift key
       if (e.shiftKey){
         switch (e.keyCode){
-          case 186: // :
-            if(arrKeyPressBuffer[arrKeyPressBuffer.length-1] != ':'){ arrKeyPressBuffer.push(':'); return; }
+                    // command mode
+          case 59:  // : firefox & Opera
+          case 186: // : safari & IE
+            mode = 'cmd';
             break;
           case 71: // G
             fnPageBottom();
@@ -85,6 +97,13 @@
             $(setting.searchBoxSelector).focus();
             return false;
         }
+      } else if (mode == 'cmd'){ // command mode
+          if (e.keyCode == 13) {
+            setting.command[command]();
+            return false;
+          }
+          command += String.fromCharCode(e.keyCode);
+          return false;
       } else if(e.keyCode == 71){ // g commands
           if(arrKeyPressBuffer[arrKeyPressBuffer.length-1] != 71){ arrKeyPressBuffer.push(71); return; }
           switch(e.keyCode){
