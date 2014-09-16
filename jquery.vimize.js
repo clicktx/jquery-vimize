@@ -12,7 +12,9 @@ var Vimize = {
       selectors: {0: 'a'},
       defaultSelectors: 0,
       command: {
-        CAT: function(){window.location.href = 'https://www.google.co.jp/search?q=%E7%8C%AB&tbm=isch';}
+        NEKO: function(){window.location.href = 'https://www.google.co.jp/search?tbm=isch&q=%E7%8C%AB';},
+        NYAN: function(){window.location.href = 'https://www.google.co.jp/search?tbm=isch&q=%E3%81%AB%E3%82%83%E3%82%93';},
+        CAT: function(){window.location.href = 'https://www.google.co.jp/search?tbm=isch&q=cat';}
       }
     };
     var setting = $.extend(defaults,options);
