@@ -1,3 +1,7 @@
+var Vimize = {
+  VERSION: '0.0.1'
+};
+
 (function($){
   $.fn.vimize = function(options){
     var defaults = {
@@ -6,11 +10,18 @@
       homePagePath: '/',
       scrollVal: $(window).height() *0.3,
       selectors: {0: 'a'},
-      defaultSelectors: 0
+      defaultSelectors: 0,
+      command: {
+        NEKO: function(){window.location.href = 'https://www.google.co.jp/search?tbm=isch&q=%E7%8C%AB';},
+        NYAN: function(){window.location.href = 'https://www.google.co.jp/search?tbm=isch&q=%E3%81%AB%E3%82%83%E3%82%93';},
+        CAT: function(){window.location.href = 'https://www.google.co.jp/search?tbm=isch&q=cat';}
+      }
     };
     var setting = $.extend(defaults,options);
 
-    var arrKeyPressBuffer = [];
+    var mode = '';
+    var command = '';
+    var keyPressBuffer = '';
     var intActiveCol = setting.defaultSelectors;
     var arrActiveElement = {};
     var $objElements = {};
@@ -39,13 +50,28 @@
       return false;
     };
     var fnActiveElement = function(n){ $($objElements[intActiveCol][n]).focus(); };
+    var fnDoCmmand = function(cmd){
+      try {
+        setting.command[cmd]();
+      } catch(e){
+        console.log(cmd+': command not found');
+      }
+    };
 
-    // hjkl
+
+    // keydown action
     $(window).keydown(function(e){
       var $focused = $("input:focus");
+      console.log(e.keyCode);
+      console.log(keyPressBuffer);
 
       // esc key
-      if (e.keyCode == 27) { $(':focus').blur(); arrKeyPressBuffer = []; }
+      if (e.keyCode == 27) {
+        $(':focus').blur();
+        keyPressBuffer = '';
+        mode = '';
+        command = '';
+      }
       // ctrl key
       if (e.ctrlKey){
         switch (e.keyCode){
@@ -59,15 +85,17 @@
             if ($focused.length) { $focused.val(''); }
             break;
         }
-        arrKeyPressBuffer = [];
+        keyPressBuffer = '';
       }
       if ($focused.length) return;
 
       // shift key
       if (e.shiftKey){
         switch (e.keyCode){
-          case 186: // :
-            if(arrKeyPressBuffer[arrKeyPressBuffer.length-1] != ':'){ arrKeyPressBuffer.push(':'); return; }
+                    // command mode
+          case 59:  // : *firefox & Opera
+          case 186: // : *safari & IE
+            mode = 'cmd';
             break;
           case 71: // G
             fnPageBottom();
@@ -85,8 +113,17 @@
             $(setting.searchBoxSelector).focus();
             return false;
         }
+      } else if (mode == 'cmd'){ // command mode
+          if (e.keyCode == 13) {
+            fnDoCmmand(command);
+            mode = '';
+            command = '';
+          } else {
+            command += String.fromCharCode(e.keyCode);
+          }
+          return false;
       } else if(e.keyCode == 71){ // g commands
-          if(arrKeyPressBuffer[arrKeyPressBuffer.length-1] != 71){ arrKeyPressBuffer.push(71); return; }
+          if(keyPressBuffer != 71){ keyPressBuffer = 71; return; }
           switch(e.keyCode){
             case 71: // gg
               fnPageTop();
@@ -98,7 +135,7 @@
             // window.location.href = $(setting.prevPage).attr('href');
             //   break;
           }
-          arrKeyPressBuffer = [];
+          keyPressBuffer = '';
           return false;
       } else {
         switch (e.keyCode){
@@ -146,7 +183,7 @@
             $(setting.searchBoxSelector).focus();
             return false;
         }
-        arrKeyPressBuffer.push(e.keyCode);
+        keyPressBuffer = e.keyCode;
         // return false; // ⌘+` 等が使えなくなる
       }
     });
