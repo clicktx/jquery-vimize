@@ -15,7 +15,7 @@
 
     var mode = '';
     var command = '';
-    var arrKeyPressBuffer = [];
+    var keyPressBuffer = '';
     var intActiveCol = setting.defaultSelectors;
     var arrActiveElement = {};
     var $objElements = {};
@@ -45,14 +45,14 @@
     };
     var fnActiveElement = function(n){ $($objElements[intActiveCol][n]).focus(); };
 
-    // hjkl
+    // keydown action
     $(window).keydown(function(e){
       var $focused = $("input:focus");
 
       // esc key
       if (e.keyCode == 27) {
         $(':focus').blur();
-        arrKeyPressBuffer = [];
+        keyPressBuffer = '';
         mode = '';
         command = '';
       }
@@ -69,7 +69,7 @@
             if ($focused.length) { $focused.val(''); }
             break;
         }
-        arrKeyPressBuffer = [];
+        keyPressBuffer = '';
       }
       if ($focused.length) return;
 
@@ -105,7 +105,7 @@
           command += String.fromCharCode(e.keyCode);
           return false;
       } else if(e.keyCode == 71){ // g commands
-          if(arrKeyPressBuffer[arrKeyPressBuffer.length-1] != 71){ arrKeyPressBuffer.push(71); return; }
+          if(keyPressBuffer != 71){ keyPressBuffer = 71; return; }
           switch(e.keyCode){
             case 71: // gg
               fnPageTop();
@@ -117,7 +117,7 @@
             // window.location.href = $(setting.prevPage).attr('href');
             //   break;
           }
-          arrKeyPressBuffer = [];
+          keyPressBuffer = '';
           return false;
       } else {
         switch (e.keyCode){
@@ -165,7 +165,7 @@
             $(setting.searchBoxSelector).focus();
             return false;
         }
-        arrKeyPressBuffer.push(e.keyCode);
+        keyPressBuffer = e.keyCode;
         // return false; // ⌘+` 等が使えなくなる
       }
     });
