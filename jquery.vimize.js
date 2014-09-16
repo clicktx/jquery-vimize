@@ -1,5 +1,5 @@
 var Vimize = {
-  VERSION: 0.1
+  VERSION: '0.0.1'
 };
 
 (function($){
@@ -93,8 +93,8 @@ var Vimize = {
       if (e.shiftKey){
         switch (e.keyCode){
                     // command mode
-          case 59:  // : firefox & Opera
-          case 186: // : safari & IE
+          case 59:  // : *firefox & Opera
+          case 186: // : *safari & IE
             mode = 'cmd';
             break;
           case 71: // G
