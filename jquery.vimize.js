@@ -48,10 +48,20 @@ var Vimize = {
       return false;
     };
     var fnActiveElement = function(n){ $($objElements[intActiveCol][n]).focus(); };
+    var fnDoCmmand = function(cmd){
+      try {
+        setting.command[cmd]();
+      } catch(e){
+        console.log(cmd+': command not found');
+      }
+    };
+
 
     // keydown action
     $(window).keydown(function(e){
       var $focused = $("input:focus");
+      console.log(e.keyCode);
+      console.log(keyPressBuffer);
 
       // esc key
       if (e.keyCode == 27) {
@@ -103,10 +113,12 @@ var Vimize = {
         }
       } else if (mode == 'cmd'){ // command mode
           if (e.keyCode == 13) {
-            setting.command[command]();
-            return false;
+            fnDoCmmand(command);
+            mode = '';
+            command = '';
+          } else {
+            command += String.fromCharCode(e.keyCode);
           }
-          command += String.fromCharCode(e.keyCode);
           return false;
       } else if(e.keyCode == 71){ // g commands
           if(keyPressBuffer != 71){ keyPressBuffer = 71; return; }
