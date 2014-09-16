@@ -1,3 +1,7 @@
+var Vimize = {
+  VERSION: 0.1
+};
+
 (function($){
   $.fn.vimize = function(options){
     var defaults = {
