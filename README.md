@@ -6,7 +6,7 @@
 
 ## 使い方
 
-```
+```html
 <script src="_path_to_/jquery.min.js"></script>
 <script src="_path_to_/jquery.vimize.js"></script>
 <script>
