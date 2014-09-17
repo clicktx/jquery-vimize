@@ -4,6 +4,9 @@
 [Gunma.web #17 - Gunma.web](http://gunmaweb.doorkeeper.jp/events/14049) のLTネタ用プラグイン。実用性あるかな？！
 
 
+## デモ
+[http://perl.no-tubo.net](http://perl.no-tubo.net)
+
 ## 使い方
 
 ```html
