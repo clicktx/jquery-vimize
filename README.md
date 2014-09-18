@@ -1,7 +1,7 @@
 # jQuery Vimize
 ブラウザでもvimしたい
 
-[Gunma.web #17 - Gunma.web](http://gunmaweb.doorkeeper.jp/events/14049) のLTネタ用プラグイン。実用性あるかな？！
+[Gunma.web #17](http://gunmaweb.doorkeeper.jp/events/14049) のLTネタ用プラグイン。実用性あるかな？！
 
 
 ## デモ
