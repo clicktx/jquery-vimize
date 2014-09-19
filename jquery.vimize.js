@@ -54,7 +54,9 @@ var Vimize = {
       try {
         setting.command[cmd]();
       } catch(e){
-        console.log(cmd+': command not found');
+        var err = cmd+': command not found';
+        if (typeof setting.commandError === 'function'){ setting.commandError(err); }
+        else { console.log(err); }
       }
     };
     var fnEscKey = function(keyCode){

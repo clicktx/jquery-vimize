@@ -34,20 +34,25 @@ $().vimize({
         CAT: function(){
             window.location.href = 'https://www.google.co.jp/search?tbm=isch&q=cat';
         }
+    },
+    commandError: function(e){
+        alert(e);
     }
 });
 ```
 
-- `homePagePath` ホームページのURLまたはpath（絶対path推奨）
+- `homePagePath` ホームページのURLまたはpath（絶対path推奨） **default: /*
 - `searchBoxSelector` 検索のinput要素を指定。
-- `selectors` hjklで移動出来る要素を指定。
-- `defaultSelectors` 複数カラム時、さいしょにjkで移動できるカラム。
+- `selectors` hjklで移動出来る要素を指定。 **default: aタグ*
+- `defaultSelectors` 複数カラム時、さいしょにjkで移動できるカラム番号。 **default: 0*
 - `command` :cmd で実行できるコマンド。keyは大文字のひつようがある
+- `commandError` :cmd 実行時に存在しない場合の動作 **default: console.log()*
+
 
 ## コマンド
 
 ### キャンセル
-- `esc` 
+- `esc` フォーカス、コマンドをキャンセル
 
 ### 検索
 - `/`or`?` 検索フォームへ移動（フォーカス）
