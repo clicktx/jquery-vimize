@@ -41,12 +41,12 @@ $().vimize({
 });
 ```
 
-- `homePagePath` ホームページのURLまたはpath（絶対path推奨） **default: /*
+- `homePagePath` ホームページのURLまたはpath（絶対path推奨） *default: /*
 - `searchBoxSelector` 検索のinput要素を指定。
-- `selectors` hjklで移動出来る要素を指定。 **default: aタグ*
-- `defaultSelectors` 複数カラム時、さいしょにjkで移動できるカラム番号。 **default: 0*
+- `selectors` hjklで移動出来る要素を指定。 *default: aタグ*
+- `defaultSelectors` 複数カラム時、さいしょにjkで移動できるカラム番号。 *default: 0*
 - `command` :cmd で実行できるコマンド。keyは大文字のひつようがある
-- `commandError` :cmd 実行時に存在しない場合の動作 **default: console.log()*
+- `commandError` :cmd 実行時に存在しない場合の動作 *default: console.log()*
 
 
 ## コマンド
