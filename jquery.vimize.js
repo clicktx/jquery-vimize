@@ -188,8 +188,6 @@ var Vimize = {
     // keydown action
     $(window).keydown(function(e){
       var $focused = $("input:focus");
-      console.log(e.keyCode);
-      console.log(keyPressBuffer);
 
       if (e.keyCode == 27) {        // esc key
         fnEscKey(e.keyCode);
@@ -209,7 +207,6 @@ var Vimize = {
           return false;
       } else {                      // any key
         ret = fnAnyKey(e.keyCode);
-        console.log(ret);
         return ret; // ⌘+` 等が使えなくなる
       }
     });
