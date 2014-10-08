@@ -1,3 +1,12 @@
+/*
+ *  jQuery Vimize v0.0.2
+ *
+ *  Copyright (c) 2014 clicktx
+ *  https://github.com/clicktx/jquery-vimize
+ *
+ *  Licensed under MIT
+ *
+ */
 var Vimize = {
   VERSION: '0.0.2'
 };
