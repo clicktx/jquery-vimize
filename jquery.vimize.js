@@ -187,7 +187,7 @@ var Vimize = {
 
     // keydown action
     $(window).keydown(function(e){
-      var $focused = $("input:focus");
+      var $focused = $("input:focus, textarea:focus");
 
       if (e.keyCode == 27) {        // esc key
         fnEscKey(e.keyCode);
