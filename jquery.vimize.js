@@ -1,5 +1,5 @@
 /*
- *  jQuery Vimize v0.0.2
+ *  jQuery Vimize v0.0.3
  *
  *  Copyright (c) 2014 clicktx
  *  https://github.com/clicktx/jquery-vimize
@@ -8,7 +8,7 @@
  *
  */
 var Vimize = {
-  VERSION: '0.0.2'
+  VERSION: '0.0.3'
 };
 
 (function($){
@@ -187,7 +187,7 @@ var Vimize = {
 
     // keydown action
     $(window).keydown(function(e){
-      var $focused = $("input:focus");
+      var $focused = $("input:focus, textarea:focus");
 
       if (e.keyCode == 27) {        // esc key
         fnEscKey(e.keyCode);
